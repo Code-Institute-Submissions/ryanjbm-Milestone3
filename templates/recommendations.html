@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation Manager</title>
+</head>
+<body>
+    {% for recommendation in recommendations %}
+        {{recommendation.recommendation_name}}<br>
+        {{recommendation.category_name}}<br>
+        {{recommendation.recommendation_description}}<br>
+        {{recommendation.under_20}}<br>
+    {% endfor %}
+</body>
+</html>
