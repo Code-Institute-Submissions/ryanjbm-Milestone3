@@ -13,6 +13,37 @@
 </head>
 <body>
 
+    <header>
+        <!-- top navbar -->
+        <nav class="nav-extended black-text cyan accent-2">
+            <div class="nav-wrapper">
+                <a href="{{url_for('get_recommendations')}}" class="black-text brand-logo">Hidden Gems</a>
+                <a href="#" data-target="mobile-demo" class="black-text sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <ul id="nav-mobile" class="black-text right hide-on-med-and-down">
+                    <li><a class="black-text" href="sass.html">Profile</a></li>
+                    <li><a class="black-text" href="badges.html">Log In</a></li>
+                    <li><a class="black-text" href="collapsible.html">Log Out</a></li>
+                </ul>
+            </div>
+            <div class="nav-content">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab"><a class="black-text" href="{{url_for('get_recommendations')}}">Home</a></li>
+                    <li class="tab"><a class="black-text" href="#test2">Our Recommendations</a></li>
+                    <li class="tab "><a class="black-text" href="#test3">Community Recommendations</a></li>
+                    <li class="tab"><a class="black-text" href="#test4">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- mobile sidenav -->
+        <ul class="sidenav" id="mobile-demo">
+            <li><h4 class="center-align light-blue-text text-darken-4">Hidden Gems</h4></li>
+            <li><a href="sass.html">Profile</a></li>
+            <li><a href="badges.html">Log In</a></li>
+            <li><a href="collapsible.html">Log Out</a></li>
+        </ul>
+    
+    </header>
+
     {% block content %}
     {% endblock %}
 
