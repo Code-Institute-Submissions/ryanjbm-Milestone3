@@ -20,6 +20,10 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+def home():
+    return render_template("home.html")
+
+
 @app.route("/get_recommendations")
 def get_recommendations():
     recommendations = mongo.db.recommendations.find()
@@ -97,6 +101,11 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
+
+
+@app.route("/add_recommendation")
+def add_recommendation():
+    return render_template("add_recommendation.html")
 
 
 if __name__ == "__main__":
