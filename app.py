@@ -124,6 +124,18 @@ def add_recommendation():
 
 @app.route("/edit_product/<recommendation_id>", methods=["GET", "POST"])
 def edit_recommendation(recommendation_id):
+    if request.method == "POST":
+        is_hidden_gem = "on" if request.form.get("is_hidden_gem") else "off"
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "product_name": request.form.get("product_name"),
+            "product_description": request.form.get("product_description"),
+            "is_hidden_gem": is_hidden_gem,
+            "author": session["user"]
+        }
+        mongo.db.recommendations.update({"_id": ObjectId(recommendation_id)},submit)
+        flash("Product Updated!")
+
     recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(recommendation_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_recommendation.html", recommendation=recommendation, categories=categories)
