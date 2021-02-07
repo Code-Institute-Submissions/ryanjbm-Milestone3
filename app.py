@@ -26,7 +26,7 @@ def home():
 
 @app.route("/get_recommendations")
 def get_recommendations():
-    recommendations = mongo.db.recommendations.find()
+    recommendations = list(mongo.db.recommendations.find())
     return render_template("recommendations.html", recommendations=recommendations)
 
 
@@ -103,8 +103,21 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_recommendation")
+@app.route("/add_recommendation", methods=["GET", "POST"])
 def add_recommendation():
+    if request.method == "POST":
+        is_hidden_gem = "on" if request.form.get("is_hidden_gem") else "off"
+        recommendations = {
+            "category_name": request.form.get("category_name"),
+            "product_name": request.form.get("product_name"),
+            "product_description": request.form.get("product_description"),
+            "is_hidden_gem": is_hidden_gem,
+            "author": session["user"]
+        }
+        mongo.db.recommendations.insert_one(recommendations)
+        flash("Product Recommended!")
+        return redirect(url_for("get_recommendations"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_recommendation.html", categories=categories)
 

@@ -2,6 +2,8 @@
 {% block content %}
 
 
+<h3 class="light-blue-text text-darken-4 center-align">Community Recommended Products</h3>
+
 <ul class="collapsible">
     {% for recommendation in recommendations %}
     <li>
@@ -15,6 +17,7 @@
         <div class="collapsible-body">
             <strong>{{recommendation.category_name}}</strong>
             <p>{{recommendation.product_description}}</p>
+            <p><em>by: {{recommendation.author}}</em></p>
         </div>
     </li>
     {% endfor %}
