@@ -122,6 +122,13 @@ def add_recommendation():
     return render_template("add_recommendation.html", categories=categories)
 
 
+@app.route("/edit_product/<recommendation_id>", methods=["GET", "POST"])
+def edit_recommendation(recommendation_id):
+    recommendation = mongo.db.recommendations.find_one({"_id": ObjectId(recommendation_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_recommendation.html", recommendation=recommendation, categories=categories)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
         port=int(os.environ.get("PORT")),

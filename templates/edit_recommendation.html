@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<h3 class="light-blue-text text-darken-4 center-align">Edit Recommendation</h3>
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}">
+        <!-- category -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <select id="category_name" name="category_name" class="validate" required>
+                    <option value="" disabled selected>Choose Category</option>
+                    {% for category in categories %}
+                    <option value="{{category.category_name}}">{{category.category_name}}</option>
+                    {% endfor %}
+                </select>
+                <label for="category_name">Product Category</label>
+            </div>
+        </div>
+        <!-- product name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <input id="product_name" name="product_name" minlength="1" maxlength="50" type="text" class="validate" required>
+                <label for="product_name">Product Name</label>
+            </div>
+        </div>
+        <!-- product description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                <textarea id="product_description" name="product_description" minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
+          <label for="product_description">Product Description</label>
+            </div>
+        </div>
+        <!-- is hidden gem toggle-->
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="switch">
+                    <i class="fas fa-piggy-bank prefix light-blue-text text-darken-4"></i>
+                    <label for="hidden_gem">
+                        <input type="checkbox" id="hidden_gem" name="hidden_gem">
+                        <span class="lever"></span>
+                        Is Under £20
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                    Edit Recommendation <i class="fas fa-edit right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
