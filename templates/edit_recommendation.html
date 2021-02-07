@@ -10,9 +10,13 @@
             <div class="input-field col s12">
                 <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                 <select id="category_name" name="category_name" class="validate" required>
-                    <option value="" disabled selected>Choose Category</option>
+                    <option value="" disabled>Choose Category</option>
                     {% for category in categories %}
+                    {% if category.category_name == recommendation.category_name %}
+                    <option value="{{category.category_name}}" selected>{{category.category_name}}</option>
+                    {% else %}
                     <option value="{{category.category_name}}">{{category.category_name}}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <label for="category_name">Product Category</label>
@@ -22,7 +26,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                <input id="product_name" name="product_name" minlength="1" maxlength="50" type="text" class="validate" required>
+                <input id="product_name" name="product_name" minlength="1" maxlength="50" value="{{recommendation.product_name}}" type="text" class="validate" required>
                 <label for="product_name">Product Name</label>
             </div>
         </div>
@@ -30,7 +34,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
-                <textarea id="product_description" name="product_description" minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
+                <textarea id="product_description" name="product_description" minlength="5" maxlength="200" class="materialize-textarea validate" required>{{- recommendation.product_description -}}</textarea>
           <label for="product_description">Product Description</label>
             </div>
         </div>
@@ -39,8 +43,12 @@
             <div class="input-field col s12">
                 <div class="switch">
                     <i class="fas fa-piggy-bank prefix light-blue-text text-darken-4"></i>
-                    <label for="hidden_gem">
-                        <input type="checkbox" id="hidden_gem" name="hidden_gem">
+                    <label for="is_hidden_gem">
+                        {% if recommendation.is_hidden_gem == "on" %}
+                            <input type="checkbox" id="is_hidden_gem" name="hidden_gem" checked>
+                        {% else %}
+                            <input type="checkbox" id="is_hidden_gem" name="is_hidden_gem">
+                        {% endif %}
                         <span class="lever"></span>
                         Is Under £20
                     </label>
@@ -50,6 +58,8 @@
         <!-- submit button -->
         <div class="row">
             <div class="col s12 center-align">
+                <!-- cancel button -->
+                <a href="{{url_for('get_recommendations')}}" class="btn-large red text-shadow">Cancel <i class="fas fa-times-circle right"></i></a>
                 <button type="submit" class="btn-large light-blue darken-1">
                     Edit Recommendation <i class="fas fa-edit right"></i>
                 </button>
