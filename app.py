@@ -30,6 +30,13 @@ def get_recommendations():
     return render_template("recommendations.html", recommendations=recommendations)
 
 
+@app.route("/search", methods=["GET","POST"])
+def search():
+    query=request.form.get("query")
+    recommendations = list(mongo.db.recommendations.find({"$text":{"$search": query}}))
+    return render_template("recommendations.html", recommendations=recommendations)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
