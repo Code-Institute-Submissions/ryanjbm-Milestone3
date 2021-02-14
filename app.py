@@ -118,6 +118,7 @@ def add_recommendation():
             "category_name": request.form.get("category_name"),
             "product_name": request.form.get("product_name"),
             "product_description": request.form.get("product_description"),
+            "product_link": request.form.get("product_link"),
             "is_hidden_gem": is_hidden_gem,
             "author": session["user"]
         }
@@ -137,6 +138,7 @@ def edit_recommendation(recommendation_id):
             "category_name": request.form.get("category_name"),
             "product_name": request.form.get("product_name"),
             "product_description": request.form.get("product_description"),
+            "product_link": request.form.get("product_link"),
             "is_hidden_gem": is_hidden_gem,
             "author": session["user"]
         }
