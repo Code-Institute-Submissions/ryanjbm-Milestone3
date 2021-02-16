@@ -24,6 +24,16 @@ def home():
     return render_template("home.html")
 
 
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+
+@app.route("/our_recommendations")
+def our_recommendations():
+    return render_template("our_recommendations.html")
+
+
 @app.route("/get_recommendations")
 def get_recommendations():
     recommendations = list(mongo.db.recommendations.find())
