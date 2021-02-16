@@ -3,6 +3,8 @@ $(document).ready(function(){
     $('.collapsible').collapsible();
     $('.tooltipped').tooltip();
     $('select').formSelect();
+    $('.carousel').carousel();
+    $('.slider').slider();
   });
 
   validateMaterializeSelect();

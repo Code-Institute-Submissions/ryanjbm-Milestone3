@@ -3,6 +3,9 @@
 
 body{
     font-family: 'Quicksand', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 .flashes h4{
     line-height: 2;
@@ -13,4 +16,15 @@ body{
 .collapsible-header .col strong{
     margin:5px;
     line-height:42px;
+}
+main {
+    flex: 1 0 auto;
+}
+.product_name{
+    font-size:30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+.slider{
+    margin-top:50px;
 }
