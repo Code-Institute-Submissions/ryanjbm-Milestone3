@@ -30,7 +30,7 @@
                     <li><a class="black-text" href="{{url_for('profile', username=session['user'])}}">Profile</a></li>
                     <li><a class="black-text" href="{{url_for('logout')}}">Log Out</a></li>
                     {% if session.user|lower == "admin"|lower %}
-                    <li class="tab "><a class="black-text" href="{{url_for('get_categories')}}">Manage Categories</a>
+                    <li class="tab"><a class="black-text" href="{{url_for('get_categories')}}">Manage Categories</a>
                     </li>
                     {% endif %}
                     {% else %}
