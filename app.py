@@ -129,6 +129,8 @@ def add_recommendation():
             "product_name": request.form.get("product_name"),
             "product_description": request.form.get("product_description"),
             "product_link": request.form.get("product_link"),
+            "product_image": request.form.get("product_image"),
+            "product_price": request.form.get("product_price"),
             "is_hidden_gem": is_hidden_gem,
             "author": session["user"]
         }
@@ -149,6 +151,8 @@ def edit_recommendation(recommendation_id):
             "product_name": request.form.get("product_name"),
             "product_description": request.form.get("product_description"),
             "product_link": request.form.get("product_link"),
+            "product_image": request.form.get("product_image"),
+            "product_price": request.form.get("product_price"),
             "is_hidden_gem": is_hidden_gem,
             "author": session["user"]
         }
