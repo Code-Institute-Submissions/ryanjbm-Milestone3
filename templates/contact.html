@@ -1,14 +1,43 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
-        <div class="col s12 m8 offset-m2"> 
-            <div class="card-panel">
-               <h3 class="center-align light-blue-text text-darken-4">
-                   Contact Us
-               </h3>
-            </div>
-    </div>
 
+<h3 class="light-blue-text text-darken-4 center-align">Contact Us</h3>
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{{url_for('add_recommendation')}}">
+        <!-- product name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <input id="product_name" name="product_name" minlength="1" maxlength="50" type="text" class="validate" required>
+                <label for="product_name">Full Name</label>
+            </div>
+        </div>
+        <!-- product description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                <textarea id="product_description" name="product_description" minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
+          <label for="product_description">Email</label>
+            </div>
+        </div>
+        <!-- product link -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <input id="product_link" name="product_link" minlength="1" maxlength="50" type="text" class="validate" required>
+                <label for="product_link">Message</label>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                     Send Message <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}
