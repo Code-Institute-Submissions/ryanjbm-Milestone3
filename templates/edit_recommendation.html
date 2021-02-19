@@ -4,7 +4,8 @@
 
 <h3 class="light-blue-text text-darken-4 center-align">Edit Recommendation</h3>
 <div class="row card-panel grey lighten-5">
-    <form class="col s12" method="POST" action="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}">
+    <form class="col s12" method="POST"
+        action="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}">
         <!-- category -->
         <div class="row">
             <div class="input-field col s12">
@@ -26,7 +27,8 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                <input id="product_name" name="product_name" minlength="1" maxlength="50" value="{{recommendation.product_name}}" type="text" class="validate" required>
+                <input id="product_name" name="product_name" minlength="1" maxlength="50"
+                    value="{{recommendation.product_name}}" type="text" class="validate" required>
                 <label for="product_name">Product Name</label>
             </div>
         </div>
@@ -34,31 +36,35 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
-                <textarea id="product_description" name="product_description" minlength="5" maxlength="200" class="materialize-textarea validate" required>{{- recommendation.product_description -}}</textarea>
-          <label for="product_description">Product Description</label>
+                <textarea id="product_description" name="product_description" minlength="5" maxlength="200"
+                    class="materialize-textarea validate" required>{{- recommendation.product_description -}}</textarea>
+                <label for="product_description">Product Description</label>
             </div>
         </div>
         <!-- product link -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                <input id="product_link" name="product_link" minlength="1" maxlength="50" type="text" value="{{recommendation.product_link}}" class="validate" required>
+                <input id="product_link" name="product_link" minlength="1" maxlength="50" type="text"
+                    value="{{recommendation.product_link}}" class="validate" required>
                 <label for="product_link">Product Link</label>
             </div>
         </div>
-                                <!-- product price -->
+        <!-- product price -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                <input id="product_price" name="product_price" minlength="1" type="text" value="{{recommendation.product_price}}" class="validate" required>
+                <input id="product_price" name="product_price" minlength="1" type="text"
+                    value="{{recommendation.product_price}}" class="validate" required>
                 <label for="product_price">Product Price</label>
             </div>
         </div>
-                        <!-- product image -->
+        <!-- product image -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
-                <input id="product_image" name="product_image" minlength="1" type="text" value="{{recommendation.product_image}}" class="validate" required>
+                <input id="product_image" name="product_image" minlength="1" type="text"
+                    value="{{recommendation.product_image}}" class="validate" required>
                 <label for="product_image">Product Image Address</label>
             </div>
         </div>
@@ -69,9 +75,9 @@
                     <i class="fas fa-piggy-bank prefix light-blue-text text-darken-4"></i>
                     <label for="is_hidden_gem">
                         {% if recommendation.is_hidden_gem == "on" %}
-                            <input type="checkbox" id="is_hidden_gem" name="hidden_gem" checked>
+                        <input type="checkbox" id="is_hidden_gem" name="hidden_gem" checked>
                         {% else %}
-                            <input type="checkbox" id="is_hidden_gem" name="is_hidden_gem">
+                        <input type="checkbox" id="is_hidden_gem" name="is_hidden_gem">
                         {% endif %}
                         <span class="lever"></span>
                         Is Under £20
@@ -83,7 +89,8 @@
         <div class="row">
             <div class="col s12 center-align">
                 <!-- cancel button -->
-                <a href="{{url_for('get_recommendations')}}" class="btn-large red text-shadow">Cancel <i class="fas fa-times-circle right"></i></a>
+                <a href="{{url_for('get_recommendations')}}" class="btn-large red text-shadow">Cancel <i
+                        class="fas fa-times-circle right"></i></a>
                 <button type="submit" class="btn-large light-blue darken-1">
                     Edit Recommendation <i class="fas fa-edit right"></i>
                 </button>

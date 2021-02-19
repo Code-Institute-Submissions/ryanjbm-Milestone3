@@ -28,35 +28,47 @@
 {% for recommendation in recommendations %}
 
 <div class="col s12 m7">
-    <div class="card horizontal blue-grey lighten-5">
-        <div class="m6 card-image">
-            <img class="materialboxed" src="{{recommendation.product_image}}">
-        </div>
-        <div class="card-stacked">
-            <div class="card-content">
-                {% if recommendation.is_hidden_gem == "on" %}
-                <h3><i class="far fa-star yellow-text tooltipped right" data-position="down"
-                        data-tooltip="HIDDEN GEM!"></i></h3>
-                {% endif %}
-                <strong class="product_name">{{recommendation.product_name}}</strong> : {{recommendation.author}}
-                <h4>{{recommendation.category_name}}</h4>
-                <p>{{recommendation.product_description }}</p>
-                <h4>£{{recommendation.product_price}}</h4>
+    {% if recommendation.is_hidden_gem == "on" %}
+    <div class="card horizontal yellow">
+        {% else %}
+        <div class="card horizontal blue-grey lighten-5">
+            {% endif %}
+            <div class="m6 card-image">
+                <img class="s6 m6" src="{{recommendation.product_image}}">
             </div>
-            <div class="card-action">
-                <a class="btn" href="{{recommendation.product_link}}">Link</a>
-                {% if session.user|lower == recommendation.author|lower %}
-                    <a href="{{url_for('delete_recommendation', recommendation_id=recommendation._id)}}" class="btn-small red accent-4">Delete</a>
-                    <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}" class="btn-small light-blue lighten-1">Edit</a>
-                {% endif %}
+            <div class="card-stacked">
+                <div class="card-content">
+                    {% if recommendation.is_hidden_gem == "on" %}
+                    <h3><i class="far fa-star black-text tooltipped right" data-position="down"
+                            data-tooltip="HIDDEN GEM!"></i></h3>
+                    {% endif %}
+                    <strong class="product_name">{{recommendation.product_name}}</strong> : {{recommendation.author}}
+                    <h4>{{recommendation.category_name}}</h4>
+                    <p>{{recommendation.product_description }}</p>
+                    <h4>£{{recommendation.product_price}}</h4>
+                </div>
+                <div class="card-action">
+                    <a class="btn" href="{{recommendation.product_link}}">Link</a>
+                    {% if session.user|lower == recommendation.author|lower %}
+                    <a href="{{url_for('delete_recommendation', recommendation_id=recommendation._id)}}"
+                        class="btn-small red accent-4">Delete</a>
+                    <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
+                        class="btn-small light-blue lighten-1">Edit</a>
+                    {% endif %}
+                    {% if session.user|lower == "admin"|lower %}
+                    <a href="{{url_for('delete_recommendation', recommendation_id=recommendation._id)}}"
+                        class="btn-small red accent-4">Delete</a>
+                    <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
+                        class="btn-small light-blue lighten-1">Edit</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
-</div>
-<hr>
-{% endfor %}
-{% else %}
-<h3 class="red-text text-darken-4 center-align">No Products Found</h3>
-{% endif %}
+    <hr>
+    {% endfor %}
+    {% else %}
+    <h3 class="red-text text-darken-4 center-align">No Products Found</h3>
+    {% endif %}
 
-{% endblock%}
+    {% endblock%}
