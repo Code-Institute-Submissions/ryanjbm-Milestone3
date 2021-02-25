@@ -1,12 +1,79 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row">
-        <div class="col s12 m8 offset-m2"> 
-            <div class="card-panel">
-               <h3 class="center-align light-blue-text text-darken-4">
-                   {{username}}'s Profile
-               </h3>
-            </div>
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+            <h3 class="center-align light-blue-text text-darken-4">
+                {{username}}'s Profile
+            </h3>
+        </div>
     </div>
-{% endblock %}
+
+    <div>
+        <div class="row">
+            <div class="col s12 m12">
+                <h3 class="black-text text-darken-4 center-align">Welcome to your Profile</h3>
+            </div>
+            <div class="col s12 m12 center-align">
+                <h4>Here you can see all the products that you have recommended!</h4>
+            </div>
+        </div>
+    </div>
+
+
+    {% if recommendations|length > 0 %}
+    {% for recommendation in recommendations %}
+    {% if session.user|lower == recommendation.author|lower %}
+    <div class="row">
+        <div class="col s12 m5">
+            {% if recommendation.is_hidden_gem == "on" %}
+            <div class="card yellow">
+                {% else %}
+                <div class="card blue-grey lighten-5">
+                    {% endif %}
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img height="300px" class="activator" src="{{recommendation.product_image}}">
+                    </div>
+                    <div class="card-content">
+                        <p><a href="{{recommendation.product_link}}">View Product</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <h4>{{recommendation.product_name}}</h4>
+                        {% if session.user|lower == recommendation.author|lower %}
+                        <a href="{{url_for('delete_recommendation', recommendation_id=recommendation._id)}}"
+                            class="btn-small red accent-4">Delete</a>
+                        <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
+                            class="btn-small light-blue lighten-1">Edit</a>
+                        {% endif %}
+                        {% if session.user|lower == "admin"|lower %}
+                        <a href="{{url_for('delete_recommendation', recommendation_id=recommendation._id)}}"
+                            class="btn-small red accent-4">Delete</a>
+                        <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
+                            class="btn-small light-blue lighten-1">Edit</a>
+                        {% endif %}
+                        <button href="" class="card-title btn-small light-blue lighten-1">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                {% if recommendation.is_hidden_gem == "on" %}
+                <h3><i class="far fa-star black-text tooltipped right" data-position="down"
+                        data-tooltip="HIDDEN GEM!"></i>
+                </h3>
+                {% endif %}
+                <h4>{{recommendation.product_name}}</h4> :
+                {{recommendation.author}}</span>
+                <h5>{{recommendation.category_name}}</h5>
+                <p>{{recommendation.product_description }}</p>
+                <h4>£{{recommendation.product_price}}</h4>
+            </div>
+
+        </div>
+        <hr>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <h3 class="red-text text-darken-4 center-align">No Products Found</h3>
+        {% endif %}
+        {% endblock %}
