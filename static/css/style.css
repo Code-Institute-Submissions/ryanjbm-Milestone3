@@ -3,13 +3,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Nova+Slim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 
 body{
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: #e1eff1;
+    letter-spacing: 0.5px;
+}
+.nav-logo{
+    padding-left:30px;
+    font-size:35px;
+}
+.card-titles{
+    font-size:200px;
 }
 h3{
     font-family: 'Karla', sans-serif;

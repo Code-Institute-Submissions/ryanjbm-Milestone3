@@ -2,13 +2,13 @@
 {% block content %}
 
 
-<h3 class="light-blue-text text-darken-4 center-align">Recommend Product</h3>
+<h3 class="black-text center-align">Recommend Product</h3>
 <div class="row card-panel grey lighten-5">
     <form class="col s12" method="POST" action="{{url_for('add_recommendation')}}">
         <!-- category -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-folder-open prefix teal-text lighten-2"></i>
                 <select id="category_name" name="category_name" class="validate" required>
                     <option value="" disabled selected>Choose Category</option>
                     {% for category in categories %}
@@ -21,7 +21,7 @@
         <!-- product name -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-pencil-alt prefix teal-text lighten-2"></i>
                 <input id="product_name" name="product_name" minlength="1" maxlength="50" type="text" class="validate" required>
                 <label for="product_name">Product Name</label>
             </div>
@@ -29,7 +29,7 @@
         <!-- product description -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-align-left prefix teal-text lighten-2"></i>
                 <textarea id="product_description" name="product_description" minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
           <label for="product_description">Product Description</label>
             </div>
@@ -37,7 +37,7 @@
         <!-- product link -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-link prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-link prefix teal-text lighten-2"></i>
                 <input id="product_link" name="product_link" minlength="1" maxlength="50" type="text" class="validate" required>
                 <label for="product_link">Product Link</label>
             </div>
@@ -45,7 +45,7 @@
                 <!-- product image -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-images prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-images prefix teal-text lighten-2"></i>
                 <input id="product_image" name="product_image" minlength="1" type="text" class="validate" required>
                 <label for="product_image">Product Image Address</label>
             </div>
@@ -53,7 +53,7 @@
                         <!-- product price -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-money-bill-wave prefix light-blue-text text-darken-4"></i>
+                <i class="fas fa-money-bill-wave prefix teal-text lighten-2"></i>
                 <input id="product_price" name="product_price" minlength="1" type="text" class="validate" required>
                 <label for="product_price">Product Price</label>
             </div>
@@ -62,7 +62,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <div class="switch">
-                    <i class="fas fa-piggy-bank prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-piggy-bank prefix teal-text lighten-2"></i>
                     <label for="is_hidden_gem">
                         <input type="checkbox" id="is_hidden_gem" name="is_hidden_gem">
                         <span class="lever"></span>
@@ -74,7 +74,7 @@
         <!-- submit button -->
         <div class="row">
             <div class="col s12 center-align">
-                <button type="submit" class="btn-large light-blue darken-1">
+                <button type="submit" class="btn-large white-text">
                     Submit Product <i class="fas fa-plus-square right"></i>
                 </button>
             </div>
