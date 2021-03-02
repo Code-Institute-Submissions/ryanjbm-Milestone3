@@ -20,32 +20,32 @@
 
     <header>
         <!-- top navbar -->
-        <nav class="nav-extended black-text white">
+        <nav class="nav-extended black-text nav-background">
             <div class="nav-wrapper">
-                <a href="{{url_for('home')}}" class="teal-text lighten-2 nav-logo">HIDDEN GEMS</a>
-                <a href="#" data-target="mobile-demo" class="teal-text lighten-2 sidenav-trigger"><i class="fas fa-bars"></i></a>
+                <a href="{{url_for('home')}}" class="white-text nav-logo">HIDDEN GEMS</a>
+                <a href="#" data-target="mobile-demo" class="white-text sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="black-text right hide-on-med-and-down">
                     {% if session.user %}
-                    <li><a class="black-text" href="{{url_for('add_recommendation')}}">RECOMMEND PRODUCT</a></li>
-                    <li><a class="black-text" href="{{url_for('profile', username=session['user'])}}">PROFILE</a></li>
-                    <li><a class="black-text" href="{{url_for('logout')}}">LOG OUT</a></li>
+                    <li><a class="white-text" href="{{url_for('add_recommendation')}}">RECOMMEND PRODUCT</a></li>
+                    <li><a class="white-text" href="{{url_for('profile', username=session['user'])}}">PROFILE</a></li>
+                    <li><a class="white-text" href="{{url_for('logout')}}">LOG OUT</a></li>
                     {% if session.user|lower == "admin"|lower %}
-                    <li class="tab"><a class="black-text" href="{{url_for('get_categories')}}">MANAGE CATEGORIES</a>
+                    <li class="tab"><a class="white-text" href="{{url_for('get_categories')}}">MANAGE CATEGORIES</a>
                     </li>
                     {% endif %}
                     {% else %}
-                    <li><a class="black-text" href="{{url_for('login')}}">LOG IN</a></li>
-                    <li><a class="black-text" href="{{url_for('register')}}">REGISTER</a></li>
+                    <li><a class="white-text" href="{{url_for('login')}}">LOG IN</a></li>
+                    <li><a class="white-text" href="{{url_for('register')}}">REGISTER</a></li>
                     {% endif %}
-                    <li class="tab"><a class="black-text" href="{{url_for('contact')}}">CONTACT US</a></li>
+                    <li class="tab"><a class="white-text" href="{{url_for('contact')}}">CONTACT US</a></li>
                 </ul>
             </div>
             <div class="nav-content">
                 <ul class="tabs tabs-transparent">
-                    <li class="tab"><a class="black-text" href="{{url_for('home')}}">HOME</a></li>
-                    <li class="tab"><a class="black-text" href="{{url_for('our_recommendations')}}">Our
+                    <li class="tab"><a class="white-text" href="{{url_for('home')}}">HOME</a></li>
+                    <li class="tab"><a class="white-text" href="{{url_for('our_recommendations')}}">Our
                             RECOMMENDATIONS</a></li>
-                    <li class="tab "><a class="black-text" href="{{url_for('get_recommendations')}}">                          COMMUNITY RECOMMENDATIONS</a></li>
+                    <li class="tab "><a class="white-text" href="{{url_for('get_recommendations')}}">                          COMMUNITY RECOMMENDATIONS</a></li>
                 </ul>
             </div>
         </nav>
@@ -85,7 +85,7 @@
         {% block content %}
         {% endblock %}
     </main>
-    <footer class="page-footer white ">
+    <footer class="page-footer footer-colour">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">

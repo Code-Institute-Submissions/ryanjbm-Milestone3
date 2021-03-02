@@ -1,18 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway+Dots&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nova+Slim&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
-
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+h1 h2 h3 h4{
+    font-family: 'Ubuntu', sans-serif;
+}
+p{
+    font-size:25px;
+    font-family: 'Josefin Sans', sans-serif;
+}
 body{
-    font-family: 'Roboto', sans-serif;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #e1ebec;
-    letter-spacing: 0.5px;
+    background-color: #fafafa;
+    letter-spacing: 1px;
 }
 .nav-logo{
     padding-left:30px;
@@ -21,12 +22,15 @@ body{
 .card-titles{
     font-size:200px;
 }
-h3{
-    font-family: 'Karla', sans-serif;
-}
 .brand-logo{
     font-family: 'Karla', sans-serif;
     margin-left:20px;
+}
+.nav-background{
+    background-color:#AFC4C0;
+}
+.footer-colour{
+    background-color:#AFC4C0;
 }
 .flashes h4{
     line-height: 2;
@@ -56,6 +60,6 @@ main {
 hr{
   clear: both;
 }
-.home-text{
-    font-family: 'Quicksand','sans serif';
+.card-min{
+    background-color:#ddddddc5;
 }
