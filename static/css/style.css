@@ -1,21 +1,24 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
-h1 h2 h3 h4{
-    font-family: 'Ubuntu', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+h1, h2, h3, h4{
+font-family: 'Arvo', serif;
 }
 p{
-    font-size:25px;
+    font-size:20px;
     font-family: 'Josefin Sans', sans-serif;
 }
 body{
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color: #fafafa;
+    background-color: white;
     letter-spacing: 1px;
 }
 .nav-logo{
+font-family: 'Arvo', serif;
     padding-left:30px;
     font-size:35px;
 }
@@ -27,10 +30,10 @@ body{
     margin-left:20px;
 }
 .nav-background{
-    background-color:#AFC4C0;
+    background-color:#333333;
 }
 .footer-colour{
-    background-color:#AFC4C0;
+    background-color:#333333;
 }
 .flashes h4{
     line-height: 2;
