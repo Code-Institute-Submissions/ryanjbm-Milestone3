@@ -34,6 +34,11 @@ def our_recommendations():
     return render_template("our_recommendations.html")
 
 
+@app.route("/date_article")
+def date_article():
+    return render_template("date_article.html")
+
+
 @app.route("/get_recommendations")
 def get_recommendations():
     recommendations = list(mongo.db.recommendations.find())

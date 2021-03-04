@@ -26,7 +26,7 @@
                 <a href="#" data-target="mobile-demo" class="white-text sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul id="nav-mobile" class="black-text right hide-on-med-and-down">
                     {% if session.user %}
-                    <li><a class="white-text" href="{{url_for('add_recommendation')}}">RECOMMEND PRODUCT</a></li>
+                    <li><a class="hovering white-text" href="{{url_for('add_recommendation')}}">RECOMMEND PRODUCT</a></li>
                     <li><a class="white-text" href="{{url_for('profile', username=session['user'])}}">PROFILE</a></li>
                     <li><a class="white-text" href="{{url_for('logout')}}">LOG OUT</a></li>
                     {% if session.user|lower == "admin"|lower %}
