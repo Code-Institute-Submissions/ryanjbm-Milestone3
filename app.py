@@ -117,15 +117,18 @@ def login():
 
 @app.route("/profile/", methods=["GET", "POST"])
 def profile():
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    if not session:
+        return render_template("home.html")
+    else:
+        # grab the session user's username from db
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
 
-    if session["user"]:
-        recommendations = list(mongo.db.recommendations.find())
-        return render_template("profile.html", username=username, recommendations=recommendations)
-    
-    return redirect(url_for("login"))
+        if session["user"]:
+            recommendations = list(mongo.db.recommendations.find())
+            return render_template("profile.html", username=username, recommendations=recommendations)
+        
+        return redirect(url_for("login"))
 
 
 
@@ -139,24 +142,27 @@ def logout():
 
 @app.route("/add_recommendation", methods=["GET", "POST"])
 def add_recommendation():#if user not in session
-    if request.method == "POST":
-        is_hidden_gem = "on" if request.form.get("is_hidden_gem") else "off"
-        recommendations = {
-            "category_name": request.form.get("category_name"),
-            "product_name": request.form.get("product_name"),
-            "product_description": request.form.get("product_description"),
-            "product_link": request.form.get("product_link"),
-            "product_image": request.form.get("product_image"),
-            "product_price": request.form.get("product_price"),
-            "is_hidden_gem": is_hidden_gem,
-            "author": session["user"]
-        }
-        mongo.db.recommendations.insert_one(recommendations)
-        flash("Product Recommended!")
-        return redirect(url_for("get_recommendations"))
+    if not session:
+        return render_template("home.html")
+    else:
+        if request.method == "POST":
+            is_hidden_gem = "on" if request.form.get("is_hidden_gem") else "off"
+            recommendations = {
+                "category_name": request.form.get("category_name"),
+                "product_name": request.form.get("product_name"),
+                "product_description": request.form.get("product_description"),
+                "product_link": request.form.get("product_link"),
+                "product_image": request.form.get("product_image"),
+                "product_price": request.form.get("product_price"),
+                "is_hidden_gem": is_hidden_gem,
+                "author": session["user"]
+            }
+            mongo.db.recommendations.insert_one(recommendations)
+            flash("Product Recommended!")
+            return redirect(url_for("get_recommendations"))
 
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_recommendation.html", categories=categories)
+        categories = mongo.db.categories.find().sort("category_name", 1)
+        return render_template("add_recommendation.html", categories=categories)
 
 
 @app.route("/edit_product/<recommendation_id>", methods=["GET", "POST"])
