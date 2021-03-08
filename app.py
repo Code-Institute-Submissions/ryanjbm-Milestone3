@@ -45,39 +45,46 @@ def get_recommendations():
     return render_template("recommendations.html", recommendations=recommendations)
 
 
-@app.route("/search", methods=["GET","POST"])
+@app.route("/search", methods=["GET", "POST"])
 def search():
-    query=request.form.get("query")
-    recommendations = list(mongo.db.recommendations.find({"$text":{"$search": query}}))
+    query = request.form.get("query")  # add default
+    recommendations = list(mongo.db.recommendations.find(
+        {"$text": {"$search": query}}))
     return render_template("recommendations.html", recommendations=recommendations)
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    if request.method == "POST":
-        # check if username already exists in db
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
 
-        if existing_user:
-            flash("Username already exists")
-            return redirect(url_for("register"))
+    if session:
+        return render_template("home.html")
+    else:
+        # register when logged in redirect
+        if request.method == "POST":
+            # check if username already exists in db
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
 
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
-        mongo.db.users.insert_one(register)
+            if existing_user:
+                flash("Username already exists")
+                return redirect(url_for("register"))
 
-        # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
-    return render_template("register.html")
+            register = {
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(request.form.get("password"))
+            }
+            mongo.db.users.insert_one(register)
+
+            # put the new user into 'session' cookie
+            session["user"] = request.form.get("username").lower()
+            flash("Registration Successful!")
+            return redirect(url_for("profile", username=session["user"]))
+        return render_template("register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    # logged when register in redirect
     if request.method == "POST":
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -105,8 +112,8 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/profile/", methods=["GET", "POST"])
+def profile():
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -128,7 +135,7 @@ def logout():
 
 
 @app.route("/add_recommendation", methods=["GET", "POST"])
-def add_recommendation():
+def add_recommendation():#if user not in session
     if request.method == "POST":
         is_hidden_gem = "on" if request.form.get("is_hidden_gem") else "off"
         recommendations = {

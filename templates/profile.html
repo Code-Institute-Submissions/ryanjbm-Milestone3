@@ -26,14 +26,14 @@
     {% for recommendation in recommendations %}
     {% if session.user|lower == recommendation.author|lower %}
     <div class="row">
-        <div class="col s12 m5">
+        <div class="col s12 m4">
             {% if recommendation.is_hidden_gem == "on" %}
             <div class="card yellow">
                 {% else %}
                 <div class="card blue-grey lighten-5">
                     {% endif %}
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img height="300px" class="activator" src="{{recommendation.product_image}}">
+                        <img height="400px" class="activator" src="{{recommendation.product_image}}">
                     </div>
                     <div class="card-content">
                         <p><a href="{{recommendation.product_link}}">View Product</a></p>
