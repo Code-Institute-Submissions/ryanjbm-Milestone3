@@ -36,6 +36,16 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Log In')
 
 
+def flash_errors(form):
+    """Flashes form errors"""
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash(u"Error in the %s field - %s" % (
+                getattr(form, field).label.text,
+                error
+            ), 'error')
+
+
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -62,6 +72,8 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
         return redirect(url_for("profile", username=session["user"]))
+    else:
+        flash_errors(form)
     return render_template("register.html", form=form)
 
 
