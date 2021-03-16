@@ -5,6 +5,7 @@
 <h3 class="black-text center-align">Recommend Product</h3>
 <div class="row card-panel grey lighten-5">
     <form class="col s12" method="POST" action="{{url_for('add_recommendation')}}">
+        {{ form.hidden_tag() }}
         <!-- category -->
         <div class="row">
             <div class="input-field col s12">
@@ -22,40 +23,40 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix teal-text lighten-2"></i>
-                <input id="product_name" name="product_name" minlength="1" maxlength="50" type="text" class="validate" required>
-                <label for="product_name">Product Name</label>
+                {{ form.product_name.label }}
+                {{ form.product_name }}
             </div>
         </div>
         <!-- product description -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-align-left prefix teal-text lighten-2"></i>
-                <textarea id="product_description" name="product_description" minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
-          <label for="product_description">Product Description</label>
+                {{ form.product_description.label }}
+                {{ form.product_description }}
             </div>
         </div>
         <!-- product link -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-link prefix teal-text lighten-2"></i>
-                <input id="product_link" name="product_link" minlength="1" maxlength="300" type="text" class="validate" required>
-                <label for="product_link">Product Link</label>
+                {{ form.product_link.label }}
+                {{ form.product_link }}
             </div>
         </div>
                 <!-- product image -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-images prefix teal-text lighten-2"></i>
-                <input id="product_image" name="product_image" minlength="1" type="text" class="validate" required>
-                <label for="product_image">Product Image Address</label>
+                {{ form.product_image.label }}
+                {{ form.product_image }}
             </div>
         </div>
                         <!-- product price -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-money-bill-wave prefix teal-text lighten-2"></i>
-                <input id="product_price" name="product_price" minlength="1" type="text" class="validate" required>
-                <label for="product_price">Product Price</label>
+                {{ form.product_price.label }}
+                {{ form.product_price }}
             </div>
         </div>
         <!-- is hidden gem toggle-->
@@ -74,9 +75,7 @@
         <!-- submit button -->
         <div class="row">
             <div class="col s12 center-align">
-                <button type="submit" class="btn-large white-text">
-                    Submit Product <i class="fas fa-plus-square right"></i>
-                </button>
+                {{ form.submit(class="col s12 btn-large white-text")}}
             </div>
         </div>
         <div class="row">

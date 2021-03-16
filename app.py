@@ -5,7 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, EqualTo
+from wtforms.validators import DataRequired, Length, EqualTo, Email
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -23,17 +23,46 @@ mongo = PyMongo(app)
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username',validators=[DataRequired(), Length(min=3, max=20)])
-    password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    username = StringField(
+        'Username', validators=[DataRequired(), Length(min=3, max=20)])
+    password = PasswordField(
+        'Password', validators=[DataRequired()])
+    confirm_password = PasswordField(
+        'Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username',validators=[DataRequired(), Length(min=3, max=20)])
+    username = StringField(
+        'Username', validators=[DataRequired(), Length(min=3, max=20)])
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Log In')
+
+
+class ProductForm(FlaskForm):
+    product_name = StringField(
+        'Product Name', validators=[DataRequired(), Length(min=3, max=30)])
+    product_description = StringField(
+        'Product Description',
+        validators=[DataRequired(), Length(min=3, max=50)])
+    product_link = StringField(
+        'Product Link', validators=[DataRequired(), Length(min=10, max=200)])
+    product_image = StringField(
+        'Product Image', validators=[DataRequired(), Length(min=10, max=200)])
+    product_price = StringField(
+        'Product Price', validators=[DataRequired(), Length(min=1, max=5)])
+    submit = SubmitField('Recommend Product')
+
+
+class ContactForm(FlaskForm):
+    name = StringField(
+        'Name', validators=[DataRequired(), Length(min=1, max=20)])
+    email = StringField(
+        'Email', validators=[DataRequired(), Email()])
+    message = StringField(
+        'Message', validators=[DataRequired(), Length(min=3, max=200)])
+    submit = SubmitField('Send Message')
 
 
 def flash_errors(form):
@@ -53,47 +82,74 @@ def home():
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm()
-    # register when logged in redirect
-    if request.method == "POST" and form.validate_on_submit():
-        # check if username already exists in db
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
-
-        if existing_user:
-            flash("Username already exists")
-            return redirect(url_for("register"))
-
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
-        mongo.db.users.insert_one(register)
-        session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
+    if "user" in session:
+        return render_template("home.html")
     else:
-        flash_errors(form)
-    return render_template("register.html", form=form)
+        form = RegistrationForm()
+        # register when logged in redirect
+        if request.method == "POST" and form.validate_on_submit():
+            # check if username already exists in db
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
+
+            if existing_user:
+                flash("Username already exists")
+                return redirect(url_for("register"))
+
+            register = {
+                "username": request.form.get("username").lower(),
+                "password": generate_password_hash(request.form.get("password"))
+            }
+            mongo.db.users.insert_one(register)
+            session["user"] = request.form.get("username").lower()
+            flash("Registration Successful!")
+            return redirect(url_for("profile", username=session["user"]))
+        else:
+            flash_errors(form)
+        return render_template("register.html", form=form)
 
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    if "user" in session:
+        return render_template("home.html")
+    else:
+        form = LoginForm()
+        # logged when register in redirect
+        if request.method == "POST" and form.validate_on_submit():
+            # check if username exists in db
+            existing_user = mongo.db.users.find_one(
+                {"username": request.form.get("username").lower()})
+
+            if existing_user:
+                # ensure hashed password matches user input
+                if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(
+                            request.form.get("username")))
+                    return redirect(url_for(
+                        "profile", username=session["user"]))
+                else:
+                    # invalid password match
+                    flash("Incorrect Username and/or Password")
+                    return redirect(url_for("login"))
+            else:
+                # username doesn't exist
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
     return render_template('login.html', title='Login', form=form)
-
-
-@app.route('/submit', methods=('GET', 'POST'))
-def submit():
-    form = MyForm()
-    if form.validate_on_submit():
-        return redirect('/success')
-    return render_template('submit.html', form=form)
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    form = ContactForm()
+    if request.method == "POST" and form.validate_on_submit():
+        flash("Message Sent")
+        return redirect(url_for("contact"))
+    else:
+        flash_errors(form)
+    return render_template("contact.html", form=form)
 
 
 @app.route("/our_recommendations")
@@ -109,7 +165,8 @@ def date_article():
 @app.route("/get_recommendations")
 def get_recommendations():
     recommendations = list(mongo.db.recommendations.find())
-    return render_template("recommendations.html", recommendations=recommendations)
+    return render_template(
+        "recommendations.html", recommendations=recommendations)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -117,7 +174,8 @@ def search():
     query = request.form.get("query")  # add default
     recommendations = list(mongo.db.recommendations.find(
         {"$text": {"$search": query}}))
-    return render_template("recommendations.html", recommendations=recommendations)
+    return render_template(
+        "recommendations.html", recommendations=recommendations)
 
 
 @app.route("/profile/", methods=["GET", "POST"])
@@ -132,7 +190,8 @@ def profile():
 
         if session["user"]:
             recommendations = list(mongo.db.recommendations.find())
-            return render_template("profile.html", username=username, recommendations=recommendations)
+        return render_template(
+            "profile.html", username=username, recommendations=recommendations)
 
         return redirect(url_for("login"))
 
@@ -150,7 +209,8 @@ def add_recommendation():  # if user not in session
     if "user" not in session:
         return render_template("home.html")
     else:
-        if request.method == "POST":
+        form = ProductForm()
+        if request.method == "POST" and form.validate_on_submit():
             is_hidden_gem = "on" if request.form.get(
                 "is_hidden_gem") else "off"
             recommendations = {
@@ -166,9 +226,11 @@ def add_recommendation():  # if user not in session
             mongo.db.recommendations.insert_one(recommendations)
             flash("Product Recommended!")
             return redirect(url_for("get_recommendations"))
-
+        else:
+            flash_errors(form)
         categories = mongo.db.categories.find().sort("category_name", 1)
-        return render_template("add_recommendation.html", categories=categories)
+    return render_template(
+        "add_recommendation.html", categories=categories, form=form)
 
 
 @app.route("/edit_product/<recommendation_id>", methods=["GET", "POST"])
@@ -176,7 +238,8 @@ def edit_recommendation(recommendation_id):
     if "user" not in session:
         return render_template("home.html")
     else:
-        if request.method == "POST":
+        form = ProductForm()
+        if request.method == "POST" and form.validate_on_submit():
             is_hidden_gem = "on" if request.form.get("is_hidden_gem") else "off"
             submit = {
                 "category_name": request.form.get("category_name"),
@@ -195,7 +258,7 @@ def edit_recommendation(recommendation_id):
         recommendation = mongo.db.recommendations.find_one(
             {"_id": ObjectId(recommendation_id)})
         categories = mongo.db.categories.find().sort("category_name", 1)
-        return render_template("edit_recommendation.html", recommendation=recommendation, categories=categories)
+        return render_template("edit_recommendation.html", recommendation=recommendation, categories=categories, form=form)
 
 
 @app.route("/delete_recommendation/<recommendation_id>")
