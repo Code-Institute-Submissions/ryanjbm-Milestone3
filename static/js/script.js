@@ -7,6 +7,13 @@ $(document).ready(function(){
     $('.slider').slider();
     $('.scrollspy').scrollSpy();
     $('.materialboxed').materialbox();
+    //initialize all modals           
+        $('.modal').modal();
+
+
+
+        //or by click on trigger
+        $('.trigger-modal').modal();
   });
 
   validateMaterializeSelect();

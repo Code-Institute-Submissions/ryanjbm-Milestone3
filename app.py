@@ -42,12 +42,12 @@ class LoginForm(FlaskForm):
 
 class ProductForm(FlaskForm):
     product_name = StringField(
-        'Product Name', validators=[DataRequired(), Length(min=3, max=30)])
+        'Product Name', validators=[DataRequired(), Length(min=3, max=50)])
     product_description = StringField(
         'Product Description',
-        validators=[DataRequired(), Length(min=3, max=50)])
+        validators=[DataRequired(), Length(min=3, max=500)])
     product_link = StringField(
-        'Product Link', validators=[DataRequired(), Length(min=10, max=200)])
+        'Product Link', validators=[DataRequired(), Length(min=10, max=1000)])
     product_image = StringField(
         'Product Image', validators=[DataRequired(), Length(min=10, max=200)])
     product_price = StringField(
