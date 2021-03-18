@@ -9,11 +9,11 @@ $(document).ready(function(){
     $('.materialboxed').materialbox();
     //initialize all modals           
         $('.modal').modal();
-
-
-
         //or by click on trigger
         $('.trigger-modal').modal();
+    $('.dropdown-trigger').dropdown();
+    $('.dropdown-trigger').open();
+    $('.dropdown-trigger').close();
   });
 
   validateMaterializeSelect();

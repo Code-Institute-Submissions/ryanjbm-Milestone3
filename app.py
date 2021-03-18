@@ -238,8 +238,7 @@ def edit_recommendation(recommendation_id):
     if "user" not in session:
         return render_template("home.html")
     else:
-        form = ProductForm()
-        if request.method == "POST" and form.validate_on_submit():
+        if request.method == "POST":
             is_hidden_gem = "on" if request.form.get("is_hidden_gem") else "off"
             submit = {
                 "category_name": request.form.get("category_name"),
@@ -258,7 +257,7 @@ def edit_recommendation(recommendation_id):
         recommendation = mongo.db.recommendations.find_one(
             {"_id": ObjectId(recommendation_id)})
         categories = mongo.db.categories.find().sort("category_name", 1)
-        return render_template("edit_recommendation.html", recommendation=recommendation, categories=categories, form=form)
+        return render_template("edit_recommendation.html", recommendation=recommendation, categories=categories)
 
 
 @app.route("/delete_recommendation/<recommendation_id>")
