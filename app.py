@@ -51,7 +51,7 @@ class ProductForm(FlaskForm):
     product_image = StringField(
         'Product Image', validators=[DataRequired(), Length(min=10, max=200)])
     product_price = StringField(
-        'Product Price', validators=[DataRequired(), Length(min=1, max=5)])
+        'Product Price', validators=[DataRequired(), Length(min=1, max=10)])
     submit = SubmitField('Recommend Product')
 
 
