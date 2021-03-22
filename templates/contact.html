@@ -9,30 +9,27 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="far fa-user-circle prefix teal-text lighten-2"></i>
-                {{ form.name.label }}
-                {{ form.name }}
+                <input type="text" class="form-control" name="name" id="fullname" placeholder="Name" required>
             </div>
         </div>
         <!-- product description -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-envelope-open-text prefix teal-text lighten-2"></i>
-                {{ form.email.label }}
-                {{ form.email }}
+                <input type="email" class="form-control" name="emailaddress" id="emailaddress" placeholder="Email" required>
             </div>
         </div>
         <!-- product link -->
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-pencil-alt prefix teal-text lighten-2"></i>
-                {{ form.message.label }}
-                {{ form.message }}
+                <textarea name="projectsummary" class="form-control" id="projectsummary" rows="7" cols="70" required></textarea>
             </div>
         </div>
         <!-- submit button -->
         <div class="row">
             <div class="col s12 center-align">
-                {{ form.submit(class="col s12 btn-large white-text")}}
+                <button id="sendmessage" value="sendMessage" type="submit" class="btn btn-secondary center-block">Send Message</button>
             </div>
         </div>
     </form>

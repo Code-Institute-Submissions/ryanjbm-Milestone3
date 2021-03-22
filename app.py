@@ -157,9 +157,14 @@ def our_recommendations():
     return render_template("our_recommendations.html")
 
 
-@app.route("/date_article")
-def date_article():
-    return render_template("date_article.html")
+@app.route("/work_article")
+def work_article():
+    return render_template("work_article.html")
+
+
+@app.route("/home_decor")
+def home_decor():
+    return render_template("home_decor.html")
 
 
 @app.route("/get_recommendations")
