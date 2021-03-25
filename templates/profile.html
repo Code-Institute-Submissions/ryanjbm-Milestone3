@@ -26,7 +26,7 @@
     {% for recommendation in recommendations %}
     {% if session.user|lower == recommendation.author|lower %}
     <div class="row">
-    <div class="col s12 m4">
+    <div class="col s12 m5">
         {% if recommendation.product_price > "20" %}
         <div class="card blue-grey lighten-5">
             {% else %}
