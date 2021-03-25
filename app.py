@@ -54,17 +54,6 @@ class ProductForm(FlaskForm):
         'Product Price', validators=[DataRequired(), Length(min=1, max=10)])
     submit = SubmitField('Recommend Product')
 
-
-class ContactForm(FlaskForm):
-    name = StringField(
-        'Name', validators=[DataRequired(), Length(min=1, max=20)])
-    email = StringField(
-        'Email', validators=[DataRequired(), Email()])
-    message = StringField(
-        'Message', validators=[DataRequired(), Length(min=3, max=200)])
-    submit = SubmitField('Send Message')
-
-
 def flash_errors(form):
     """Flashes form errors"""
     for field, errors in form.errors.items():
