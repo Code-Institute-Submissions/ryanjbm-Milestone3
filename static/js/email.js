@@ -4,7 +4,7 @@ function sendMail(contactForm) {
     emailjs.send("gmail", "HiddenGems-email", {
             "from_name": contactForm.name.value,
             "from_email": contactForm.emailaddress.value,
-            "contact_request": contactForm.projectsummary.value
+            "message": contactForm.message.value
         })
         .then(
             function(response) {
