@@ -7,40 +7,41 @@
 # Introduction
 Hidden Gems is a site made so that people can join the community and share the products that they love to friends, family and strangers. The site labels products under £20 as a 'Hidden Gem' and provides people with external links to the products.
 
-This is my second Milestone Project for my Full Stack Development Course at The Code Institute, in which I was given the instructions to make an Interactive Front End Project. In creating this website I used CSS3, HTML5 and JavaScript.
+This is my third Milestone Project of four towards my Full Stack Software Development Course, throughout this project I utilised HTML, CSS, JavaScript and Python, as well as Flask, Materialize and JQuery Frameworks to put the whole project together.
 
 # UX
 
 ### Goals
 
-* To make my Madrid Tourism website provide users with sufficient information about where they should eat and visit in Madrid
+* To provide a platform where users are able to upload products along with the image for others too see
 * To create an aesthetically pleasing and easy to navigate webpage for the user
 * To use Interactive and effective features on my website
-* Successful use of APIs in the webpage
+* Provide a functioning account creation service for users
 
 ### User Stories
 
-1. I am a user looking for general tourism information about Madrid
-1. I am a user looking for places to eat in Madrid
-1. I am a user looking for directions to landmarks in Madrid
-1. I am a user who wants to request other specific information about Madrid
-1. I am a user wishing to find out information on events taking place in Madrid
+1. I am a user wishing to show people my favourite products
+1. I am a user looking for gift ideas
+1. I am a user wanting to see what members of the hidden gem community recommend to buy specifically in the fitness category 
+1. I am a user who wants to search for which phones people recommend on Hidden Gems
+1. I am a user looking to see what experts recommend I should buy for my home office
+1. I am a user wishing to create an account on Hidden Gems to recommend a product i recently found
 
 
 ### Design Process
 
-1. I began my process by making a plan of how I wanted to layout my website. I came to the decision to do a single page website split into different sections including "Hero Section", "About Section", "Map Section", "Places to Eat & Visit" and a "Contact Form".
-1. Throughout my design process I used a simple colour scheme and only a few fonts for my page, the colours I used were: <br>
-  #fafafa (Background and some text)<br>
-  Black (Most of text and button background)<br>
-  Green (USed when hovering over menu items, card info and Map info window)<br>
-  Orange  (Used for hovering and clicking buttons on page)<br>
+1. My process began with creating a wireframe on figma, designing my site with initially a blue colour scheme in mind, I settled on a home page, login/register pages, article pages as well as community recommendations page.
+1. Throughout my design process my colours used were changed to the following: <br>
+  Black (Used for navigation and footer bars)<br>
+  Teal (Used for higlight text and most buttons)<br>
+  White (Used for navigation text and footer text)<br>
+  Black  (Used for general text on the page)<br>
 After some experimentation and changes throughout the design and building process these were the colours that I decided look the best, the fonts I used were the following:<br>
   Righteous <br>
   Padauk <br>
   Permanent Marker <br>
 1. I made a wireframe for my project using FIGMA. I made the design aesthetically pleasing and made sure it was easy to navigate through. I first made my desktop page and then made my mobile layout. Throughout the process of building my website I made a few changes and additions based off of my experience as well as input from family and friends
-1. Some of the changes I made included adding images to separate sections and a few colours and where they are used.
+1. Some of the changes I made included editing the layout of the page, customising features on the site too
 
 
 
