@@ -5,8 +5,7 @@
 <img src="assets/images/responsive.png">
 
 # Introduction
-
-My Madrid website is a web page built to provide tourism information to users about the city of Madrid, informing them of places to visit, eat, event info, map showing locations of places via markers and a functional contact form allowing users to ask more questions about Madrid. My ideas for the page came from what I would like to see and know if i was to visit Madrid and some of the places have been recommended from my own personal experience in Madrid.
+Hidden Gems is a site made so that people can join the community and share the products that they love to friends, family and strangers. The site labels products under £20 as a 'Hidden Gem' and provides people with external links to the products.
 
 This is my second Milestone Project for my Full Stack Development Course at The Code Institute, in which I was given the instructions to make an Interactive Front End Project. In creating this website I used CSS3, HTML5 and JavaScript.
 
