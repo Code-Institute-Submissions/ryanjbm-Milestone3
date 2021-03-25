@@ -143,13 +143,10 @@ def login():
 
 @app.route("/contact")
 def contact():
-    form = ContactForm()
-    if request.method == "POST" and form.validate_on_submit():
+    if request.method == "POST":
         flash("Message Sent")
         return redirect(url_for("contact"))
-    else:
-        flash_errors(form)
-    return render_template("contact.html", form=form)
+    return render_template("contact.html")
 
 
 @app.route("/our_recommendations")
