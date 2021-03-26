@@ -58,21 +58,20 @@ Throughout the process of coding my website and input from other people, a few i
 # Features
 
 ### Features throughout page
-* Collapsible Navigation Bar which is stuck to the top of the page, once scrolling menu becomes slightly opaque
-* Back to top button in bottom right corner of the page, stays on screen whole time
-* Images throughout the page zoom in when mouse hovers over them
-* Content fades in as scrolling down
+* Collapsible Navigation Bar which is stuck to the top of the page, once collapsed side nav becomes available
+* When Logged in or Logged Out different options are available in the menu to click on
+* Unable to visit register or login page when a user is in session, any attempt will redirect to the home page
 
 ### Nav Bar
 * Collapsable Nav Bar
-* Text turns green on hover
-* When clicked scrolls down to section on page
+* Different menu options available when logged in
+* Side Nav when collapsed
 
 ### Hero Section
-* Background hero image of Madrid with overlay text, event info with arrow overlay at the bottom
-* Scrolling text underneath the image showing event information
+* Image carousel automatically switching every few seconds
+* Overlay text sliding in from different directions after each image change
 
-### Map
+###  
 * Google Map api used
 * Legend showing what each custom marker image stands for, on mobile legend appears below
 * When clicking each marker info window shows with name of place and link to google maps directions for the place
