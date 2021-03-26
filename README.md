@@ -2,7 +2,7 @@
 
 [Live Project](http://hiddengems-milestone3.herokuapp.com/)
 
-<img src="assets/images/responsive.png">
+<img src="static/images/responsive.png">
 
 # Introduction
 Hidden Gems is a site made so that people can join the community and share the products that they love to friends, family and strangers. The site labels products under £20 as a 'Hidden Gem' and provides people with external links to the products.
@@ -47,10 +47,10 @@ After some experimentation and changes throughout the design and building proces
 
 # [Figma Wireframe](https://www.figma.com)
 > This includes the wireframes for both desktop and mobile device layouts
-<img src="assets/images/figma.png">
-<img src="assets/images/figma1.png">
-<img src="assets/images/figma2.png">
-<img src="assets/images/figma3.png">
+<img src="static/images/figma.png">
+<img src="static/images/figma1.png">
+<img src="static/images/figma2.png">
+<img src="static/images/figma3.png">
 
 Throughout the process of coding my website and input from other people, a few improvements were made to the website to not only make it look more professional but also to include more useful features.
 
