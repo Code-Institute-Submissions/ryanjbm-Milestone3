@@ -37,9 +37,9 @@ This is my third Milestone Project of four towards my Full Stack Software Develo
   White (Used for navigation text and footer text)<br>
   Black  (Used for general text on the page)<br>
 After some experimentation and changes throughout the design and building process these were the colours that I decided look the best, the fonts I used were the following:<br>
-  Righteous <br>
-  Padauk <br>
-  Permanent Marker <br>
+  Arvo <br>
+  Josefin <br>
+  Karla <br>
 1. I made a wireframe for my project using FIGMA. I made the design aesthetically pleasing and made sure it was easy to navigate through. I first made my desktop page and then made my mobile layout. Throughout the process of building my website I made a few changes and additions based off of my experience as well as input from family and friends
 1. Some of the changes I made included editing the layout of the page, customising features on the site too
 
@@ -48,6 +48,9 @@ After some experimentation and changes throughout the design and building proces
 # [Figma Wireframe](https://www.figma.com)
 > This includes the wireframes for both desktop and mobile device layouts
 <img src="assets/images/figma.png">
+<img src="assets/images/figma1.png">
+<img src="assets/images/figma2.png">
+<img src="assets/images/figma3.png">
 
 Throughout the process of coding my website and input from other people, a few improvements were made to the website to not only make it look more professional but also to include more useful features.
 
