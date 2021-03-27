@@ -71,28 +71,22 @@ Throughout the process of coding my website and input from other people, a few i
 * Image carousel automatically switching every few seconds
 * Overlay text sliding in from different directions after each image change
 
-###  
-* Google Map api used
-* Legend showing what each custom marker image stands for, on mobile legend appears below
-* When clicking each marker info window shows with name of place and link to google maps directions for the place
+### User Session
+* Using Mongo DB to have a user register and login feature
+* Certain pages arent available when logged in and logged out
+* Unable to register an account which is already in the database
 
-### Places to eat & visit
-* Separating images with overlay text zoom on hover
-* Card images zoom on hover
-* Read more buttons show text when clicked and button changes to say Read Less, text colour changes when hovering over
-* Link scrolling up to map when clicked, zooms and centers on custom marker
-* When clicking on image redirects to the website of restaurant or website with information about place to visit
+### Community Recommendation
+* Users can submit their own recommendations
+* All fields must be filled, validated using WTForms
+* User pastes in image address
+* If item is under £20, product is marked as a hidden gem, box turns yellow with star
 
 ### Contact Form
 * Email js api used
 * Checks all fields are filled before allowing to submit
-* Once submitted alert box opens showing message has been sent
 * Page refreshes afterwards
 * Functional contact form which sends email to my account, showing who sent the email
-
-### Example of email received via contact form
-<img src="assets/images/email.png">
-
 
 # Technologies Used
 
@@ -102,7 +96,9 @@ Throughout the process of coding my website and input from other people, a few i
 * CSS3 
   * Used to style content
 * JavaScript
-  * Usd to add Interactive features to webpage
+  * Used to add Interactive features to webpage
+* Python
+  * Used for Backend programming
   
   
 ### Technologies
@@ -120,21 +116,18 @@ Throughout the process of coding my website and input from other people, a few i
   * Used this to check that my HTML and CSS code were both valid throughout my project
 * [Stack Overflow](https://stackoverflow.com)
   * I used this to help me with small issues I encountered when writing my code
-* [Google Maps API](https://developers.google.com/maps/documentation)
-  * Used to get the code and key to use google maps api in my website
-* [Icons8](https://icons8.com/)
-  * I used this website to get custom markers for my Google Maps Api
   
   
 # Testing
 
 ### Testing User Stories
 
-1. User was looking for general information about Madrid, was able to find this by reading about section at top of page, navigated to by scrolling or clicking link in the navbar
-1. User looking for places to eat in Madrid, by clicking the places to eat & visit link was able to click read more button to see information about restaurants, redirect to website of place or click link to see the location in the map
-1. User looking for directions to landmarks in Madrid, they scrolled down to the map and by looking at the legend found the markers marked as landmarks
-1. User wanting to request specific information about Madrid scrolled down to the bottom of the website to the contact form, filled in the fields and submitted their message, alert box showed giving user confirmation that it has been sent
-1. User looking to find out about events in madrid was able to read the scrolling information bar underneath the hero image to read about events coming up
+1. User wanted to show off their favourite products, was able to fill out form after registering and uploaded their favourite hoover from amazon
+1. User looking for new gift ideas went onto site and clicked on community recommendations tab, then scrolled through to see if they liked any recommendations 
+1. User wanted to see items specifically related to fitness, they clicked on community recommendations and typed fitness into the search bar which displayed specific results
+1. User went onto community recommendations page and searched for phones and results displayed all the mobile phone results
+1. User wanted to see expert recommendations so went onto homepage and clicked on the article for home office, which displayed list of office items recommended by the experts at Hidden Gems
+1. User wanted to recommend their favourite items, they registered a new account then went to recommend product tab and filled in the form
 
 ### Testing Devices
 
