@@ -66,10 +66,12 @@ Throughout the process of coding my website and input from other people, a few i
 * Collapsable Nav Bar
 * Different menu options available when logged in
 * Side Nav when collapsed
+<img src="static/images/figma5.png">
 
 ### Hero Section
 * Image carousel automatically switching every few seconds
 * Overlay text sliding in from different directions after each image change
+<img src="static/images/figma4.png">
 
 ### User Session
 * Using Mongo DB to have a user register and login feature
