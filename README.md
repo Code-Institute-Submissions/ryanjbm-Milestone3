@@ -104,12 +104,12 @@ Throughout the process of coding my website and input from other people, a few i
   
   
 ### Technologies
-* [Bootstrap Framework](https://getbootstrap.com)
-  * Used Bootstrap's grid system and styles for buttons to help the web page be more responsive for mobile layouts as well as for my navbar
+* [Materialize Framework](https://materializecss.com/)
+  * Used Materialize's for features suh as my navbar, layout, carousels, buttons, footer and forms
 * [FontAwesome](https://fontawesome.com)
   * Used for social links in footer, hero image, navbar and back to top button
 * [Google Fonts](https://fonts.google.com)
-  * Used Righteous, Padauk and Permanent Marker
+  * Used Arvo, Josefin and Karla
 * [Google Images](https://www.google.co.uk/imghp?hl=en&tab=wi&authuser=0&ogbl)
   * Used for all of my images, each was checked to be copyright free
 * [W3 Schools](https://www.w3schools.com)
