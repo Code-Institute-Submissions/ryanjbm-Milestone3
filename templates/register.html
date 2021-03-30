@@ -1,51 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <h3 class="center-align">Register</h3>
-
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}"> 
-            {{ form.hidden_tag() }}
-            <div class="card-panel">
-                <!-- username -->
-                <div class="row">
-					<div class="input-field col s12">
-						<i class="fas fa-user-plus prefix teal-text lighten-2"></i>
-                        {{ form.username.label }}
-                        {{ form.username }}
-					</div>
-                </div>
-                <!-- passowrd -->
-                <div class="row">
-                    <div class="input-field col s12">
-						<i class="fas fa-user-lock prefix teal-text lighten-2"></i>
-                        {{ form.password.label }}
-                        {{ form.password }}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
-						<i class="fas fa-user-lock prefix teal-text lighten-2"></i>
-                        {{ form.confirm_password.label }}
-                        {{ form.confirm_password }}
-                    </div>
-                </div>
-                <!-- register -->
-                <div class="row">
-                    {{ form.submit(class="col s12 btn-large teal  text-shadow")}}
-                </div>
+<!-- Title -->
+<h3 class="center-align">Register</h3>
+<!-- Form -->
+<div class="row">
+   <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+      {{ form.hidden_tag() }}
+      <div class="card-panel">
+         <!-- username -->
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="fas fa-user-plus prefix teal-text lighten-2"></i>
+               {{ form.username.label }}
+               {{ form.username }}
             </div>
-        </form>
-    </div>
-
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-                Already Registered?
-                <a href="{{url_for('login')}}" class="teal-text lighten-2">Log In</a>
-            </p>
-        </div>
-    </div>
-
+         </div>
+         <!-- password -->
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="fas fa-user-lock prefix teal-text lighten-2"></i>
+               {{ form.password.label }}
+               {{ form.password }}
+            </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="fas fa-user-lock prefix teal-text lighten-2"></i>
+               {{ form.confirm_password.label }}
+               {{ form.confirm_password }}
+            </div>
+         </div>
+         <!-- register -->
+         <div class="row">
+            {{ form.submit(class="col s12 btn-large teal  text-shadow")}}
+         </div>
+      </div>
+   </form>
+</div>
+<!-- Submit button -->
+<div class="row">
+   <div class="col s12">
+      <p class="center-align">
+         Already Registered?
+         <a href="{{url_for('login')}}" class="teal-text lighten-2">Log In</a>
+      </p>
+   </div>
+</div>
 {% endblock %}

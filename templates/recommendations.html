@@ -1,76 +1,75 @@
 {% extends "base.html" %}
 {% block content %}
-
-
-<h3 class="black-text text-darken-4 center-align">Community Recommended Products</h3>
-
+<!-- Page title -->
+<h3 class="black-text text-darken-4 center-align">Welcome To Community Recommendations</h3>
+<p class="center-align">Here you can browse through products that our community loves! Feel free to use the search bar for any specific items!</p>
+<p class="center-align">Want to recommend your favourite products? If you haven't already join <a class="" href="{{url_for('register')}}"><strong>Here!</strong></a></p>
+<!-- Search Bar -->
 <div class="row card-panel white">
-    <form action="{{url_for('search')}}" method="post" class="col s12">
-        <div class="row valign-wrapper center-align">
-            <div class="input-field col s12 m12">
-                <i class="fas fa-search prefix teal-text lighten-2"></i>
-                <input type="text" name="query" id="query" minlength="3" class="validate" required>
-                <label for="query">Search Products</label>
-            </div>
-        </div>
-        <div class="row valign-wrapper center-align">
-            <div class="col s12 m12">
-                <a href="{{url_for('get_recommendations')}}" class="red btn">Reset</a>
-                <button type="submit" class="light-blue darken-1 btn">
-                    <i class="fas fa-search left"></i> Search
-                </button>
-            </div>
-        </div>
-    </form>
+   <form action="{{url_for('search')}}" method="post" class="col s12">
+      <div class="row valign-wrapper center-align">
+         <div class="input-field col s12 m12">
+            <i class="fas fa-search prefix teal-text lighten-2"></i>
+            <input type="text" name="query" id="query" minlength="3" class="validate" required>
+            <label for="query">Search Products</label>
+         </div>
+      </div>
+      <div class="row valign-wrapper center-align">
+         <div class="col s12 m12">
+            <a href="{{url_for('get_recommendations')}}" class="red btn">Reset</a>
+            <button type="submit" class="light-blue darken-1 btn">
+            <i class="fas fa-search left"></i> Search
+            </button>
+         </div>
+      </div>
+   </form>
 </div>
+<!-- Product recommendation cards -->
 {% if recommendations|length > 0 %}
 {% for recommendation in recommendations %}
 <div class="row">
-    <div class="col s12 m5">
-        {% if recommendation.product_price > "20" %}
-        <div class="card blue-grey lighten-5">
-            {% else %}
-            <div class="card yellow">
-                {% endif %}
-                <div class="card-image">
-                    <img height="400px" src="{{recommendation.product_image}}">
-
-                    <a href="{{recommendation.product_link}}"
-                        target="_blank" class="btn-floating halfway-fab waves-effect waves-light red"><i class="fab fa-amazon"></i></a>
-                </div>
-                <div class="card-content">
-                    <h3 class="black-text card-title">{{recommendation.product_name}}</h3>
-                    {% if session.user|lower == recommendation.author|lower %}
-                    <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
-                        class="btn-small light-blue lighten-1">Edit</a>
-                    {% endif %}
-                    {% if session.user|lower == "admin"|lower %}
-                    <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
-                        class="btn-small light-blue lighten-1">Edit</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-        <div class="col s12 m6">
-            {% if recommendation.product_price > "20" %}
-            <h3></h3>
-            {% else %}
-                <h3><i class="far fa-star black-text tooltipped right" data-position="down" data-tooltip="HIDDEN GEM!"></i>
-                </h3>
+<div class="col s12 m5">
+   {% if recommendation.product_price > "20" %}
+   <div class="card blue-grey lighten-5">
+      {% else %}
+      <div class="card yellow">
+         {% endif %}
+         <div class="card-image">
+            <img height="400px" src="{{recommendation.product_image}}">
+            <a href="{{recommendation.product_link}}"
+               target="_blank" class="btn-floating halfway-fab waves-effect waves-light red"><i class="fab fa-amazon"></i></a>
+         </div>
+         <div class="card-content">
+            <h3 class="black-text card-title">{{recommendation.product_name}}</h3>
+            {% if session.user|lower == recommendation.author|lower %}
+            <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
+               class="btn-small light-blue lighten-1">Edit</a>
             {% endif %}
-            <h4>{{recommendation.product_name}}</h4> :
-            {{recommendation.author}}
-            <h5>{{recommendation.category_name}}</h5>
-            <p>{{recommendation.product_description }}</p>
-            <h4>£{{recommendation.product_price}}</h4>
-        </div>
-
-    </div>
-    <hr>
-    {% endfor %}
-    {% else %}
-    <h3 class="red-text text-darken-4 center-align">No Products Found</h3>
-    {% endif %}
-
-    {% endblock %}
+            {% if session.user|lower == "admin"|lower %}
+            <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
+               class="btn-small light-blue lighten-1">Edit</a>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+   <div class="col s12 m6">
+      {% if recommendation.product_price > "20" %}
+      <h3></h3>
+      {% else %}
+      <h3><i class="far fa-star black-text tooltipped right" data-position="down" data-tooltip="HIDDEN GEM!"></i>
+      </h3>
+      {% endif %}
+      <h4>{{recommendation.product_name}}</h4>
+      :
+      {{recommendation.author}}
+      <h5>{{recommendation.category_name}}</h5>
+      <p>{{recommendation.product_description }}</p>
+      <h4>£{{recommendation.product_price}}</h4>
+   </div>
+</div>
+<hr>
+{% endfor %}
+{% else %}
+<h3 class="red-text text-darken-4 center-align">No Products Found</h3>
+{% endif %}
+{% endblock %}
