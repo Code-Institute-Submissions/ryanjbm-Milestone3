@@ -7,7 +7,7 @@
 # Introduction
 Hidden Gems is a site made so that people can join the community and share the products that they love to friends, family and strangers. The site labels products under £20 as a 'Hidden Gem' and provides people with external links to the products.
 
-This is my third Milestone Project of four towards my Full Stack Software Development Course, throughout this project I utilised HTML, CSS, JavaScript and Python, as well as Flask, Materialize and JQuery Frameworks to put the whole project together.
+This is my third Milestone Project of four towards my Full Stack Software Development Course, throughout this project I utilised HTML, CSS, JavaScript and Python, as well as Flask, Materialize and JQuery Frameworks and Mongo DB to put the whole project together.
 
 # UX
 
@@ -89,6 +89,12 @@ Throughout the process of coding my website and input from other people, a few i
 * Checks all fields are filled before allowing to submit
 * Page refreshes afterwards
 * Functional contact form which sends email to my account, showing who sent the email
+
+### Security
+* As passwords were being saved, I used Werkzeug to encrypt passwords to my database
+* Protects users passwords from being revealed if site was to be hacked
+* WTForms used to prevent people from editing frontend security and bypassing
+* Backend Python used to redirect if user is logged in so cant access register or login pages and if user isnt logged in cant access profile or recommend product pages
 
 # Technologies Used
 
