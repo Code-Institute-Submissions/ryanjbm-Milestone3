@@ -5,7 +5,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, Length, EqualTo, Email
+from wtforms.validators import DataRequired, Length, EqualTo
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -21,6 +21,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+# WTForm validation for registration form
+
 
 class RegistrationForm(FlaskForm):
     username = StringField(
@@ -32,12 +34,18 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Sign Up')
 
 
+# WTForm validation for login form
+
+
 class LoginForm(FlaskForm):
     username = StringField(
         'Username', validators=[DataRequired(), Length(min=3, max=20)])
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Log In')
+
+
+# WTForm validation for product recommendation form
 
 
 class ProductForm(FlaskForm):
@@ -54,6 +62,9 @@ class ProductForm(FlaskForm):
         'Product Price', validators=[DataRequired(), Length(min=1, max=10)])
     submit = SubmitField('Recommend Product')
 
+
+# displays errors with forms
+
 def flash_errors(form):
     """Flashes form errors"""
     for field, errors in form.errors.items():
@@ -64,10 +75,14 @@ def flash_errors(form):
             ), 'error')
 
 
+# Home Page
+
 @app.route("/")
 def home():
     return render_template("home.html")
 
+
+# register Page
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -87,7 +102,8 @@ def register():
 
             register = {
                 "username": request.form.get("username").lower(),
-                "password": generate_password_hash(request.form.get("password"))
+                "password": generate_password_hash(
+                    request.form.get("password"))
             }
             mongo.db.users.insert_one(register)
             session["user"] = request.form.get("username").lower()
@@ -97,6 +113,8 @@ def register():
             flash_errors(form)
         return render_template("register.html", form=form)
 
+
+# login Page
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -113,7 +131,7 @@ def login():
             if existing_user:
                 # ensure hashed password matches user input
                 if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
+                   existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(
                             request.form.get("username")))
@@ -130,6 +148,8 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
+# Contact Page
+
 @app.route("/contact")
 def contact():
     if request.method == "POST":
@@ -138,20 +158,21 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/our_recommendations")
-def our_recommendations():
-    return render_template("our_recommendations.html")
-
+# Work article Page
 
 @app.route("/work_article")
 def work_article():
     return render_template("work_article.html")
 
 
+# Home decor article Page
+
 @app.route("/home_decor")
 def home_decor():
     return render_template("home_decor.html")
 
+
+# community recommendations Page
 
 @app.route("/get_recommendations")
 def get_recommendations():
@@ -159,6 +180,8 @@ def get_recommendations():
     return render_template(
         "recommendations.html", recommendations=recommendations)
 
+
+# search bar function
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
@@ -168,6 +191,8 @@ def search():
     return render_template(
         "recommendations.html", recommendations=recommendations)
 
+
+# Profile Page
 
 @app.route("/profile/", methods=["GET", "POST"])
 def profile():
@@ -187,6 +212,8 @@ def profile():
         return redirect(url_for("login"))
 
 
+# Logout function
+
 @app.route("/logout")
 def logout():
     # remove user from session cookies
@@ -194,6 +221,8 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+
+# Add recommendation Page
 
 @app.route("/add_recommendation", methods=["GET", "POST"])
 def add_recommendation():  # if user not in session
@@ -224,13 +253,16 @@ def add_recommendation():  # if user not in session
         "add_recommendation.html", categories=categories, form=form)
 
 
+# Edit recommendation Page
+
 @app.route("/edit_product/<recommendation_id>", methods=["GET", "POST"])
 def edit_recommendation(recommendation_id):
     if "user" not in session:
         return render_template("home.html")
     else:
         if request.method == "POST":
-            is_hidden_gem = "on" if request.form.get("is_hidden_gem") else "off"
+            is_hidden_gem = "on" if request.form.get(
+                "is_hidden_gem") else "off"
             submit = {
                 "category_name": request.form.get("category_name"),
                 "product_name": request.form.get("product_name"),
@@ -248,8 +280,12 @@ def edit_recommendation(recommendation_id):
         recommendation = mongo.db.recommendations.find_one(
             {"_id": ObjectId(recommendation_id)})
         categories = mongo.db.categories.find().sort("category_name", 1)
-        return render_template("edit_recommendation.html", recommendation=recommendation, categories=categories)
+        return render_template(
+            "edit_recommendation.html",
+            recommendation=recommendation, categories=categories)
 
+
+# Delete recommendation function
 
 @app.route("/delete_recommendation/<recommendation_id>")
 def delete_recommendation(recommendation_id):
@@ -258,11 +294,15 @@ def delete_recommendation(recommendation_id):
     return redirect(url_for("get_recommendations"))
 
 
+# Admin category page
+
 @app.route("/get_categories")
 def get_categories():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html", categories=categories)
 
+
+# Add category function
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
@@ -278,27 +318,6 @@ def add_category():
             return redirect(url_for("get_categories"))
 
         return render_template("add_categories.html")
-
-
-@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
-def edit_category(category_id):
-    if request.method == "POST":
-        submit = {
-            "category_name": request.form.get("category_name")
-        }
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
-        flash("Category Succesfully Updated")
-        return redirect(url_for("get_categories"))
-
-    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    return render_template("edit_categories.html", category=category)
-
-
-@app.route("/delete_category/<category_id>")
-def delete_category(category_id):
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Successfully Deleted")
-    return redirect(url_for("get_categories"))
 
 
 if __name__ == "__main__":

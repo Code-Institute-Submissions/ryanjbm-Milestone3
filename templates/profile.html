@@ -1,77 +1,72 @@
 {% extends "base.html" %}
 {% block content %}
-
+<!-- Heading text-->
 <div class="row">
-    <div class="col s12 m8 offset-m2">
-        <div class="card-panel">
-            <h3 class="center-align teal-text lighten-2">
-                {{username}}'s Profile
-            </h3>
-        </div>
-    </div>
-
-    <div>
-        <div class="row">
-            <div class="col s12 m12">
-                <h3 class="black-text text-darken-4 center-align">Welcome to your Profile</h3>
-            </div>
-            <div class="col s12 m12 center-align">
-                <h4>Here you can see all the products that you have recommended!</h4>
-            </div>
-        </div>
-    </div>
-
-
-    {% if recommendations|length > 0 %}
-    {% for recommendation in recommendations %}
-    {% if session.user|lower == recommendation.author|lower %}
-    <div class="row">
-    <div class="col s12 m5">
-        {% if recommendation.product_price > "20" %}
-        <div class="card blue-grey lighten-5">
-            {% else %}
-            <div class="card yellow">
-                {% endif %}
-                <div class="card-image">
-                    <img height="400px" src="{{recommendation.product_image}}">
-
-                    <a href="{{recommendation.product_link}}"
-                        class="btn-floating halfway-fab waves-effect waves-light red"><i class="fab fa-amazon"></i></a>
-                </div>
-                <div class="card-content">
-                    <h3 class="black-text card-title">{{recommendation.product_name}}</h3>
-                    {% if session.user|lower == recommendation.author|lower %}
-                    <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
-                        class="btn-small light-blue lighten-1">Edit</a>
-                    {% endif %}
-                    {% if session.user|lower == "admin"|lower %}
-                    <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
-                        class="btn-small light-blue lighten-1">Edit</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-        <div class="col s12 m6">
-            {% if recommendation.product_price > "20" %}
-            <h3></h3>
-            {% else %}
-            <h3><i class="far fa-star black-text tooltipped right" data-position="down" data-tooltip="HIDDEN GEM!"></i>
-            </h3>
+<div class="col s12 m8 offset-m2">
+   <div class="card-panel">
+      <h3 class="center-align teal-text lighten-2">
+         {{username}}'s Profile
+      </h3>
+   </div>
+</div>
+<div>
+   <div class="row">
+      <div class="col s12 m12">
+         <h3 class="black-text text-darken-4 center-align">Welcome to your Profile</h3>
+      </div>
+      <div class="col s12 m12 center-align">
+         <h4>Here you can see all the products that you have recommended!</h4>
+      </div>
+   </div>
+</div>
+<!-- Users recommendations -->
+{% if recommendations|length > 0 %}
+{% for recommendation in recommendations %}
+{% if session.user|lower == recommendation.author|lower %}
+<div class="row">
+<div class="col s12 m6">
+   {% if recommendation.product_price > "20" %}
+   <div class="card blue-grey lighten-5">
+      {% else %}
+      <div class="card yellow">
+         {% endif %}
+         <div class="card-image">
+            <img height="400px" src="{{recommendation.product_image}}">
+            <a href="{{recommendation.product_link}}"
+               class="btn-floating halfway-fab waves-effect waves-light red"><i class="fab fa-amazon"></i></a>
+         </div>
+         <div class="card-content">
+            <h3 class="black-text card-title">{{recommendation.product_name}}</h3>
+            {% if session.user|lower == recommendation.author|lower %}
+            <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
+               class="btn-small light-blue lighten-1">Edit</a>
             {% endif %}
-            <h4>{{recommendation.product_name}}</h4> :
-            {{recommendation.author}}</span>
-            <h5>{{recommendation.category_name}}</h5>
-            <p>{{recommendation.product_description }}</p>
-            <h4>£{{recommendation.product_price}}</h4>
-        </div>
-
-    </div>
-    <hr>
-
-    {% else %}
-    <h3 class="red-text text-darken-4 center-align">No Products Found</h3>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
-        {% endblock %}
+            {% if session.user|lower == "admin"|lower %}
+            <a href="{{url_for('edit_recommendation', recommendation_id=recommendation._id)}}"
+               class="btn-small light-blue lighten-1">Edit</a>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+   <div class="col s12 m6">
+      {% if recommendation.product_price > "20" %}
+      <h3></h3>
+      {% else %}
+      <h3><i class="far fa-star black-text tooltipped right" data-position="down" data-tooltip="HIDDEN GEM!"></i>
+      </h3>
+      {% endif %}
+      <h4>{{recommendation.product_name}}</h4>
+      :
+      {{recommendation.author}}</span>
+      <h5>{{recommendation.category_name}}</h5>
+      <p>{{recommendation.product_description }}</p>
+      <h4>£{{recommendation.product_price}}</h4>
+   </div>
+</div>
+<hr>
+{% else %}
+<h3 class="red-text text-darken-4 center-align">No Products Found</h3>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endblock %}
