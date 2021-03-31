@@ -90,6 +90,12 @@ Throughout the process of coding my website and input from other people, a few i
 * Page refreshes afterwards
 * Functional contact form which sends email to my account, showing who sent the email
 
+### Admin
+* As admin you are able to delete any recommendations people have made
+* As admin can also add new categories for products that people may want to recommend
+* Admin username: Admin
+* Admin Password: Password
+
 ### Security
 * As passwords were being saved, I used Werkzeug to encrypt passwords to my database
 * Protects users passwords from being revealed if site was to be hacked
