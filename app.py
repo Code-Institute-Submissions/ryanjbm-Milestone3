@@ -21,49 +21,50 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-# WTForm validation for registration form
+""" WTForm validation for registration form """
 
 
 class RegistrationForm(FlaskForm):
     username = StringField(
-        'Username', validators=[DataRequired(), Length(min=3, max=20)])
+        "Username", validators=[DataRequired(), Length(min=3, max=20)])
     password = PasswordField(
-        'Password', validators=[DataRequired()])
+        "Password", validators=[DataRequired()])
     confirm_password = PasswordField(
-        'Confirm Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Sign Up')
+        "Confirm Password", validators=[DataRequired(), EqualTo("password")])
+    submit = SubmitField("Sign Up")
 
 
-# WTForm validation for login form
+""" WTForm validation for login form"""
 
 
 class LoginForm(FlaskForm):
     username = StringField(
-        'Username', validators=[DataRequired(), Length(min=3, max=20)])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember = BooleanField('Remember Me')
-    submit = SubmitField('Log In')
+        "Username", validators=[DataRequired(), Length(min=3, max=20)])
+    password = PasswordField("Password", validators=[DataRequired()])
+    remember = BooleanField("Remember Me")
+    submit = SubmitField("Log In")
 
 
-# WTForm validation for product recommendation form
+""" WTForm validation for product recommendation form"""
 
 
 class ProductForm(FlaskForm):
     product_name = StringField(
-        'Product Name', validators=[DataRequired(), Length(min=3, max=50)])
+        "Product Name", validators=[DataRequired(), Length(min=3, max=50)])
     product_description = StringField(
-        'Product Description',
+        "Product Description",
         validators=[DataRequired(), Length(min=3, max=500)])
     product_link = StringField(
-        'Product Link', validators=[DataRequired(), Length(min=10, max=1000)])
+        "Product Link", validators=[DataRequired(), Length(min=10, max=1000)])
     product_image = StringField(
-        'Product Image', validators=[DataRequired(), Length(min=10, max=200)])
+        "Product Image", validators=[DataRequired(), Length(min=10, max=200)])
     product_price = StringField(
-        'Product Price', validators=[DataRequired(), Length(min=1, max=10)])
-    submit = SubmitField('Recommend Product')
+        "Product Price", validators=[DataRequired(), Length(min=1, max=10)])
+    submit = SubmitField("Recommend Product")
 
 
-# displays errors with forms
+""" displays errors with forms """
+
 
 def flash_errors(form):
     """Flashes form errors"""
@@ -72,22 +73,24 @@ def flash_errors(form):
             flash(u"Error in the %s field - %s" % (
                 getattr(form, field).label.text,
                 error
-            ), 'error')
+            ), "error")
 
 
-# Home Page
+""" Home Page"""
+
 
 @app.route("/")
 def home():
     return render_template("home.html")
 
 
-# register Page
+""" register Page"""
 
-@app.route("/register", methods=['GET', 'POST'])
+
+@app.route("/register", methods=["GET", "POST"])
 def register():
     if "user" in session:
-        return render_template("home.html")
+        return redirect(url_for("home"))
     else:
         form = RegistrationForm()
         # register when logged in redirect
@@ -114,12 +117,13 @@ def register():
         return render_template("register.html", form=form)
 
 
-# login Page
+""" login Page"""
 
-@app.route("/login", methods=['GET', 'POST'])
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if "user" in session:
-        return render_template("home.html")
+        return redirect(url_for("home"))
     else:
         form = LoginForm()
         # logged when register in redirect
@@ -145,10 +149,11 @@ def login():
                 # username doesn't exist
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-    return render_template('login.html', title='Login', form=form)
+    return render_template("login.html", title="Login", form=form)
 
 
-# Contact Page
+""" Contact Page"""
+
 
 @app.route("/contact")
 def contact():
@@ -158,21 +163,24 @@ def contact():
     return render_template("contact.html")
 
 
-# Work article Page
+""" Work article Page"""
+
 
 @app.route("/work_article")
 def work_article():
     return render_template("work_article.html")
 
 
-# Home decor article Page
+""" Home decor article Page"""
+
 
 @app.route("/home_decor")
 def home_decor():
     return render_template("home_decor.html")
 
 
-# community recommendations Page
+""" community recommendations Page"""
+
 
 @app.route("/get_recommendations")
 def get_recommendations():
@@ -181,38 +189,38 @@ def get_recommendations():
         "recommendations.html", recommendations=recommendations)
 
 
-# search bar function
+""" search bar function"""
+
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    query = request.form.get("query")  # add default
+    query = request.form.get("query")
     recommendations = list(mongo.db.recommendations.find(
         {"$text": {"$search": query}}))
     return render_template(
         "recommendations.html", recommendations=recommendations)
 
 
-# Profile Page
+""" Profile Page"""
+
 
 @app.route("/profile/", methods=["GET", "POST"])
 def profile():
     if "user" not in session:
-        return render_template("home.html")
+        return redirect(url_for("login"))
     else:
-
         # grab the session user's username from db
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-
         if session["user"]:
             recommendations = list(mongo.db.recommendations.find())
         return render_template(
             "profile.html", username=username, recommendations=recommendations)
+    return redirect(url_for("login"))
 
-        return redirect(url_for("login"))
 
+""" Logout function"""
 
-# Logout function
 
 @app.route("/logout")
 def logout():
@@ -222,12 +230,13 @@ def logout():
     return redirect(url_for("login"))
 
 
-# Add recommendation Page
+""" Add recommendation Page"""
+
 
 @app.route("/add_recommendation", methods=["GET", "POST"])
 def add_recommendation():  # if user not in session
     if "user" not in session:
-        return render_template("home.html")
+        return redirect(url_for("home"))
     else:
         form = ProductForm()
         if request.method == "POST" and form.validate_on_submit():
@@ -253,12 +262,13 @@ def add_recommendation():  # if user not in session
         "add_recommendation.html", categories=categories, form=form)
 
 
-# Edit recommendation Page
+""" Edit recommendation Page"""
+
 
 @app.route("/edit_product/<recommendation_id>", methods=["GET", "POST"])
 def edit_recommendation(recommendation_id):
     if "user" not in session:
-        return render_template("home.html")
+        return redirect(url_for("home"))
     else:
         if request.method == "POST":
             is_hidden_gem = "on" if request.form.get(
@@ -285,7 +295,8 @@ def edit_recommendation(recommendation_id):
             recommendation=recommendation, categories=categories)
 
 
-# Delete recommendation function
+""" Delete recommendation function"""
+
 
 @app.route("/delete_recommendation/<recommendation_id>")
 def delete_recommendation(recommendation_id):
@@ -294,7 +305,8 @@ def delete_recommendation(recommendation_id):
     return redirect(url_for("get_recommendations"))
 
 
-# Admin category page
+""" Admin category page"""
+
 
 @app.route("/get_categories")
 def get_categories():
@@ -302,12 +314,13 @@ def get_categories():
     return render_template("categories.html", categories=categories)
 
 
-# Add category function
+""" Add category function"""
+
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
     if "user" not in session:
-        return render_template("home.html")
+        return redirect(url_for("home"))
     else:
         if request.method == "POST":
             category = {
