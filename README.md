@@ -230,7 +230,7 @@ I created my Milestone project using the GitPod environment and pushing it to Gi
 
 ### Content
 
-The content of my website was written by me, however names and locations of places are real.
+The content of my website was written by me
 
 ### Media
 
