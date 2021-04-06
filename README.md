@@ -204,6 +204,22 @@ I tested my page on the following browsers and found it worked on all
 Extensive testing by family, friends was used and no issues arose when doing so
 
 # Deployment
+This project has been pushed and deployed to the cloud application platform Heroku.
+
+1. On Heroku create an account and log in.
+1. Click new and create new app.
+1. Choose a unique name for your app, select region and click on Create App
+1. Go to the CLI and type $ sudo snap install heroku --classic
+1. Type $ heroku login command into the terminal, type the email and the password.
+1. Go back to Heroku, under Settings find Info and copy the Heroku Git URL.
+1. Go to the CLI and type the command $ git remote add heroku <Heroku Git URL>
+1. Create requirements.txt ($ sudo pip3 freeze --local > requirements.txt)
+1. Create a Procfile ($ echo web: python app.py > Procfile)
+1. Type git add ., git commit -m "Initial commit" and git push -u heroku master
+1. Type $ heroku ps:scale web=1 into the terminal.
+1. Go back to Heroku, under the Settings click Reveal Config Vars and set IP to 0.0.0.0 and the PORT to 5000. Set "MONGO_URI", "MONGO_DBNAME" and "API_KEY" with the corresponding values.
+1. Go back into Heroku and under More click Restart all dynos
+1. Click on Open App
 
 ### Deploying
 
