@@ -148,37 +148,37 @@ Throughout the process of coding my website and input from other people, a few i
   User will navigate to <b>Register</b> page via navigation bar, fill in the Register form and click submit, they will then be redirected to the <b>Profile</b> page, an option will appear saying <b>Recommend Product</b> which they will click, fill in the form and press the recommend product button to submit.
   
 ### Manual Testing
-Test: Find the purpose of the site
-Expected outcome: To find a description on first page of what the site does without needing to scroll.
-Result: Passed
+* Test: Find the purpose of the site
+* Expected outcome: To find a description on first page of what the site does without needing to scroll.
+* Result: Passed
 
-Test: Able to register a new account and view profile
-Expected Outcome: Be able to register with all forms functioning properly and able to login
-Result: Passed
+* Test: Able to register a new account and view profile
+* Expected Outcome: Be able to register with all forms functioning properly and able to login
+* Result: Passed
 
-Test: Able to recommend product
-Expected outcome: Once logged in, able to fill out product recommendation form and succesfully submit
-Result: Passed
+* Test: Able to recommend product
+* Expected outcome: Once logged in, able to fill out product recommendation form and succesfully submit
+* Result: Passed
 
-Test: Be able to edit reecommendation
-Expected outcome: Be able to click edit button and change fields such as the name of product and submit change
-Result: Passed
+* Test: Be able to edit reecommendation
+* Expected outcome: Be able to click edit button and change fields such as the name of product and submit change
+* Result: Passed
 
-Test: Be able to delete product recommendation
-Expected outcome:Be able to click edit button on product submitted by user, click delete and confirm delete in pop up window
-Result: Passed
+* Test: Be able to delete product recommendation
+* Expected outcome:Be able to click edit button on product submitted by user, click delete and confirm delete in pop up window
+* Result: Passed
 
-Test: Unable to register without filling in all fields
-Expected outcome: When filling in field if left blank on submit message appear under field saying to not leave blank
-Result: Passed
+* Test: Unable to register without filling in all fields
+* Expected outcome: When filling in field if left blank on submit message appear under field saying to not leave blank
+* Result: Passed
 
-Test: Unable to register with unmatching password
-Expected outcome: When filling in field if passwords do not match, message flash above field saying passwords didn't match and user is unable to register
-Result: Passed
+* Test: Unable to register with unmatching password
+* Expected outcome: When filling in field if passwords do not match, message flash above field saying passwords didn't match and user is unable to register
+* Result: Passed
 
-Test: Unable to login with wrong login details
-Expected outcome: Flash message above form saying wrong username and or password
-Redult: Passed
+* Test: Unable to login with wrong login details
+* Expected outcome: Flash message above form saying wrong username and or password
+* Result: Passed
 
 ### Testing Devices
 
