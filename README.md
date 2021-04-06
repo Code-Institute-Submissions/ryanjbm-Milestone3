@@ -135,13 +135,17 @@ Throughout the process of coding my website and input from other people, a few i
 ### Testing User Stories
 
 1. "I am a user wishing to show people my favourite products"
-  User would click on <b>Login</b> then <b>Recommend Product</b> fill out the form and press recommend.
-3. User looking for new gift ideas went onto site and clicked on community recommendations tab, then scrolled through to see if they liked any recommendations 
-4. User wanted to see items specifically related to fitness, they clicked on community recommendations and typed fitness into the search bar which displayed specific results
-5. User went onto community recommendations page and searched for phones and results displayed all the mobile phone results
-6. User wanted to see expert recommendations so went onto homepage and clicked on the article for home office, which displayed list of office items recommended by the experts at Hidden Gems
-7. User wanted to recommend their favourite items, they registered a new account then went to recommend product tab and filled in the form
-
+  User would click on <b>Login</b> then <b>Recommend Product</b> fill out the form and press recommend product button.
+3. "I am a user looking for gift ideas"
+  User from the home page will click on the <b>Community Recommendations</b> tab and scroll though the products for ideas 
+5. "I am a user wanting to see what members of the hidden gem community recommend to buy specifically in the fitness category"
+  User will click on <b>Community Reccomendations</b> tab and then in the <b>Search Bar</b> type in "Fitness", this will then only display results with fitness in.
+7. "I am a user who wants to search for which phones people recommend on Hidden Gems"
+  User will click on the <b>Community Recommendations</b> tab from the home page and in the <b>Search Bar</b> type in "Phones", this will then only display results related with mobile phones
+9. "I am a user looking to see what experts recommend I should buy for my home office"
+  From the <b>Home Page</b> the user will scroll down and select one of the articles for example the <b>Home decor</b> Article and read through what experts recommend. 
+11. "I am a user wishing to create an account on Hidden Gems to recommend a product i recently found"
+  User will navigate to <b>Register</b> page via navigation bar, fill in the Register form and click submit, they will then be redirected to the <b>Profile</b> page, an option will appear saying <b>Recommend Product</b> which they will click, fill in the form and press the recommend product button to submit.
 ### Testing Devices
 
 My webpage was tested using Google Developer Tools to see if it's responsive. All devices were tested successfully including Iphones, Samsungs and Ipads of different screen sizes
