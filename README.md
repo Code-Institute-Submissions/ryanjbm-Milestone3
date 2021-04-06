@@ -134,12 +134,13 @@ Throughout the process of coding my website and input from other people, a few i
 
 ### Testing User Stories
 
-1. User wanted to show off their favourite products, was able to fill out form after registering and uploaded their favourite hoover from amazon
-1. User looking for new gift ideas went onto site and clicked on community recommendations tab, then scrolled through to see if they liked any recommendations 
-1. User wanted to see items specifically related to fitness, they clicked on community recommendations and typed fitness into the search bar which displayed specific results
-1. User went onto community recommendations page and searched for phones and results displayed all the mobile phone results
-1. User wanted to see expert recommendations so went onto homepage and clicked on the article for home office, which displayed list of office items recommended by the experts at Hidden Gems
-1. User wanted to recommend their favourite items, they registered a new account then went to recommend product tab and filled in the form
+1. "I am a user wishing to show people my favourite products"
+  User would click on <b>Login<b> then <b>Recommend Product<b> fill out the form and press recommend.
+3. User looking for new gift ideas went onto site and clicked on community recommendations tab, then scrolled through to see if they liked any recommendations 
+4. User wanted to see items specifically related to fitness, they clicked on community recommendations and typed fitness into the search bar which displayed specific results
+5. User went onto community recommendations page and searched for phones and results displayed all the mobile phone results
+6. User wanted to see expert recommendations so went onto homepage and clicked on the article for home office, which displayed list of office items recommended by the experts at Hidden Gems
+7. User wanted to recommend their favourite items, they registered a new account then went to recommend product tab and filled in the form
 
 ### Testing Devices
 
