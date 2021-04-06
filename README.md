@@ -93,8 +93,6 @@ Throughout the process of coding my website and input from other people, a few i
 ### Admin
 * As admin you are able to delete any recommendations people have made
 * As admin can also add new categories for products that people may want to recommend
-* Admin username: Admin
-* Admin Password: Password
 
 ### Security
 * As passwords were being saved, I used Werkzeug to encrypt passwords to my database
@@ -150,6 +148,9 @@ My webpage was tested using Google Developer Tools to see if it's responsive. Al
 ### Validating HTML5 and CSS3 code
 
 My code was tested on the WC3 Validation pages and passed all tests
+<img src="static/images/htmlcheck.png">
+<img src="static/images/csscheck.png">
+
 
 ### Different Browsers
 
@@ -169,12 +170,6 @@ During my code I had issues with having custom info windows for my Google Maps A
 
 I created my Milestone project using the GitPod environment and pushing it to Github after completing each section, this made sure that my project had good version control in place in case I needed to change some of the work. To create a live version of my project for people to view I did the following:
 
-* Went to my Milestone Project repository on GitHub
-* Went to settings and scrolled down to GitHub Pages
-* Selected the master branch as source which then gave me the link to include in my ReadMe for people to view
-* You can view my project here: [Madrid](https://ryanjbm.github.io/Milestone-Project-2/)
-
-To run locally, you can clone this repository directly into the editor of your choice by pasting git clone https://github.com/ryanjbm/Milestone-Project-2.git into the terminal. To cut ties with this GitHub repository, type git remote rm origin into the terminal.
 
 # Credits
 
