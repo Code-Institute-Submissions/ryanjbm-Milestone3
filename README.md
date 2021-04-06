@@ -135,7 +135,7 @@ Throughout the process of coding my website and input from other people, a few i
 ### Testing User Stories
 
 1. "I am a user wishing to show people my favourite products"
-  User would click on <b>Login<b> then <b>Recommend Product<b> fill out the form and press recommend.
+  User would click on <b>Login</b> then <b>Recommend Product</b> fill out the form and press recommend.
 3. User looking for new gift ideas went onto site and clicked on community recommendations tab, then scrolled through to see if they liked any recommendations 
 4. User wanted to see items specifically related to fitness, they clicked on community recommendations and typed fitness into the search bar which displayed specific results
 5. User went onto community recommendations page and searched for phones and results displayed all the mobile phone results
