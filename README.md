@@ -7,13 +7,13 @@
 # Introduction
 Hidden Gems is a site made so that people can join the community and share the products that they love to friends, family and strangers. The site labels products under £20 as a 'Hidden Gem' and provides people with external links to the products.
 
-This is my third Milestone Project of four towards my Full Stack Software Development Course, throughout this project I utilised HTML, CSS, JavaScript and Python, as well as Flask, Materialize and JQuery Frameworks and Mongo DB to put the whole project together.
+This is my third Milestone Project of four towards my Full Stack Software Development Course, throughout this project I utilised HTML, CSS, JavaScript and Python, as well as Flask, Materialize and JQuery Frameworks and MongoDB to put the whole project together.
 
 # UX
 
 ### Goals
 
-* To provide a platform where users are able to upload products along with the image for others too see
+* To provide a platform where users are able to upload products along with the image for others to see
 * To create an aesthetically pleasing and easy to navigate webpage for the user
 * To use Interactive and effective features on my website
 * Provide a functioning account creation service for users
@@ -33,7 +33,7 @@ This is my third Milestone Project of four towards my Full Stack Software Develo
 1. My process began with creating a wireframe on figma, designing my site with initially a blue colour scheme in mind, I settled on a home page, login/register pages, article pages as well as community recommendations page.
 1. Throughout my design process my colours used were changed to the following: <br>
   Black (Used for navigation and footer bars)<br>
-  Teal (Used for higlight text and most buttons)<br>
+  Teal (Used for highlight text and most buttons)<br>
   White (Used for navigation text and footer text)<br>
   Black  (Used for general text on the page)<br>
 After some experimentation and changes throughout the design and building process these were the colours that I decided look the best, the fonts I used were the following:<br>
@@ -74,8 +74,8 @@ Throughout the process of coding my website and input from other people, a few i
 <img src="static/images/figma4.png">
 
 ### User Session
-* Using Mongo DB to have a user register and login feature
-* Certain pages arent available when logged in and logged out
+* Using MongoDB to have a user register and login feature
+* Certain pages aren't available when logged in and logged out
 * Unable to register an account which is already in the database
 
 ### Community Recommendation
@@ -100,7 +100,7 @@ Throughout the process of coding my website and input from other people, a few i
 * As passwords were being saved, I used Werkzeug to encrypt passwords to my database
 * Protects users passwords from being revealed if site was to be hacked
 * WTForms used to prevent people from editing frontend security and bypassing
-* Backend Python used to redirect if user is logged in so cant access register or login pages and if user isnt logged in cant access profile or recommend product pages
+* Backend Python used to redirect if user is logged in so cant access register or login pages and if user isn't logged in can't access profile or recommend product pages
 
 # Technologies Used
 
@@ -117,7 +117,7 @@ Throughout the process of coding my website and input from other people, a few i
   
 ### Technologies
 * [Materialize Framework](https://materializecss.com/)
-  * Used Materialize's for features suh as my navbar, layout, carousels, buttons, footer and forms
+  * Used Materialize for features such as my navbar, layout, carousels, buttons, footer and forms
 * [FontAwesome](https://fontawesome.com)
   * Used for social links in footer, hero image, navbar and back to top button
 * [Google Fonts](https://fonts.google.com)
@@ -207,8 +207,3 @@ Thank you to the following for the support on issues and for offering advice on 
 * Code Institute Slack Community
 * Family and friends for constructive criticism
 
-
-
-
-
-  
