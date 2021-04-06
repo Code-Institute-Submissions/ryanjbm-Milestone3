@@ -139,7 +139,7 @@ Throughout the process of coding my website and input from other people, a few i
 3. "I am a user looking for gift ideas"
   User from the home page will click on the <b>Community Recommendations</b> tab and scroll though the products for ideas 
 5. "I am a user wanting to see what members of the hidden gem community recommend to buy specifically in the fitness category"
-  User will click on <b>Community Reccomendations</b> tab and then in the <b>Search Bar</b> type in "Fitness", this will then only display results with fitness in.
+  User will click on <b>Community Recomendations</b> tab and then in the <b>Search Bar</b> type in "Fitness", this will then only display results with fitness in.
 7. "I am a user who wants to search for which phones people recommend on Hidden Gems"
   User will click on the <b>Community Recommendations</b> tab from the home page and in the <b>Search Bar</b> type in "Phones", this will then only display results related with mobile phones
 9. "I am a user looking to see what experts recommend I should buy for my home office"
@@ -149,7 +149,7 @@ Throughout the process of coding my website and input from other people, a few i
   
 ### Manual Testing
 * Test: Find the purpose of the site
-* Expected outcome: To find a description on first page of what the site does without needing to scroll.
+* Expected outcome: To find a description on the first page of what the site does without needing to scroll.
 * Result: Passed
 
 * Test: Able to register a new account and view profile
@@ -157,15 +157,15 @@ Throughout the process of coding my website and input from other people, a few i
 * Result: Passed
 
 * Test: Able to recommend product
-* Expected outcome: Once logged in, able to fill out product recommendation form and succesfully submit
+* Expected outcome: Once logged in, able to fill out product recommendation form and successfully submit
 * Result: Passed
 
-* Test: Be able to edit reecommendation
+* Test: Be able to edit recommendation
 * Expected outcome: Be able to click edit button and change fields such as the name of product and submit change
 * Result: Passed
 
 * Test: Be able to delete product recommendation
-* Expected outcome:Be able to click edit button on product submitted by user, click delete and confirm delete in pop up window
+* Expected outcome: Be able to click edit button on product submitted by user, click delete and confirm delete in pop up window
 * Result: Passed
 
 * Test: Unable to register without filling in all fields
@@ -173,7 +173,7 @@ Throughout the process of coding my website and input from other people, a few i
 * Result: Passed
 
 * Test: Unable to register with unmatching password
-* Expected outcome: When filling in field if passwords do not match, message flash above field saying passwords didn't match and user is unable to register
+* Expected outcome: When filling in field if passwords do not match, message flash above field saying passwords don't match and user is unable to register
 * Result: Passed
 
 * Test: Unable to login with wrong login details
