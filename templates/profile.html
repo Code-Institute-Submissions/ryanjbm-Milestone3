@@ -12,7 +12,7 @@
 <div>
    <div class="row">
       <div class="col s12 m12">
-         <h3 class="black-text text-darken-4 center-align">Welcome to your Profile</h3>
+         <h4 class="black-text text-darken-4 center-align">Welcome to your Profile</h4>
       </div>
       <div class="col s12 m12 center-align">
          <h4>Here you can see all the products that you have recommended!</h4>
@@ -32,7 +32,7 @@
          {% endif %}
          <div class="card-image">
             <img height="450px" src="{{recommendation.product_image}}" alt="{{recommendation.product_name}}">
-            <a href="{{recommendation.product_link}}"
+            <a target="_blank" href="{{recommendation.product_link}}"
                class="btn-floating halfway-fab waves-effect waves-light red"><i class="fab fa-amazon"></i></a>
          </div>
          <div class="card-content">
@@ -70,7 +70,7 @@
 {% endif %}
  <div class="row">
       <div class="col s12 m12">
-         <h2 class="home-text center-align">Dont see any products?</h2>
+         <h6 class="home-text center-align">Dont see any products?</h6>
       </div>
    </div>
    <div class="row">
