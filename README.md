@@ -93,8 +93,6 @@ Throughout the process of coding my website and input from other people, a few i
 ### Admin
 * As admin you are able to delete any recommendations people have made
 * As admin can also add new categories for products that people may want to recommend
-* Admin username: Admin
-* Admin Password: Password
 
 ### Security
 * As passwords were being saved, I used Werkzeug to encrypt passwords to my database
@@ -136,12 +134,51 @@ Throughout the process of coding my website and input from other people, a few i
 
 ### Testing User Stories
 
-1. User wanted to show off their favourite products, was able to fill out form after registering and uploaded their favourite hoover from amazon
-1. User looking for new gift ideas went onto site and clicked on community recommendations tab, then scrolled through to see if they liked any recommendations 
-1. User wanted to see items specifically related to fitness, they clicked on community recommendations and typed fitness into the search bar which displayed specific results
-1. User went onto community recommendations page and searched for phones and results displayed all the mobile phone results
-1. User wanted to see expert recommendations so went onto homepage and clicked on the article for home office, which displayed list of office items recommended by the experts at Hidden Gems
-1. User wanted to recommend their favourite items, they registered a new account then went to recommend product tab and filled in the form
+1. "I am a user wishing to show people my favourite products"
+  User would click on <b>Login</b> then <b>Recommend Product</b> fill out the form and press recommend product button.
+3. "I am a user looking for gift ideas"
+  User from the home page will click on the <b>Community Recommendations</b> tab and scroll though the products for ideas 
+5. "I am a user wanting to see what members of the hidden gem community recommend to buy specifically in the fitness category"
+  User will click on <b>Community Recomendations</b> tab and then in the <b>Search Bar</b> type in "Fitness", this will then only display results with fitness in.
+7. "I am a user who wants to search for which phones people recommend on Hidden Gems"
+  User will click on the <b>Community Recommendations</b> tab from the home page and in the <b>Search Bar</b> type in "Phones", this will then only display results related with mobile phones
+9. "I am a user looking to see what experts recommend I should buy for my home office"
+  From the <b>Home Page</b> the user will scroll down and select one of the articles for example the <b>Home decor</b> Article and read through what experts recommend. 
+11. "I am a user wishing to create an account on Hidden Gems to recommend a product i recently found"
+  User will navigate to <b>Register</b> page via navigation bar, fill in the Register form and click submit, they will then be redirected to the <b>Profile</b> page, an option will appear saying <b>Recommend Product</b> which they will click, fill in the form and press the recommend product button to submit.
+  
+### Manual Testing
+* Test: Find the purpose of the site
+* Expected outcome: To find a description on the first page of what the site does without needing to scroll.
+* Result: Passed
+
+* Test: Able to register a new account and view profile
+* Expected Outcome: Be able to register with all forms functioning properly and able to login
+* Result: Passed
+
+* Test: Able to recommend product
+* Expected outcome: Once logged in, able to fill out product recommendation form and successfully submit
+* Result: Passed
+
+* Test: Be able to edit recommendation
+* Expected outcome: Be able to click edit button and change fields such as the name of product and submit change
+* Result: Passed
+
+* Test: Be able to delete product recommendation
+* Expected outcome: Be able to click edit button on product submitted by user, click delete and confirm delete in pop up window
+* Result: Passed
+
+* Test: Unable to register without filling in all fields
+* Expected outcome: When filling in field if left blank on submit message appear under field saying to not leave blank
+* Result: Passed
+
+* Test: Unable to register with unmatching password
+* Expected outcome: When filling in field if passwords do not match, message flash above field saying passwords don't match and user is unable to register
+* Result: Passed
+
+* Test: Unable to login with wrong login details
+* Expected outcome: Flash message above form saying wrong username and or password
+* Result: Passed
 
 ### Testing Devices
 
@@ -150,6 +187,9 @@ My webpage was tested using Google Developer Tools to see if it's responsive. Al
 ### Validating HTML5 and CSS3 code
 
 My code was tested on the WC3 Validation pages and passed all tests
+<img src="static/images/htmlcheck.png">
+<img src="static/images/csscheck.png">
+
 
 ### Different Browsers
 
@@ -159,28 +199,38 @@ I tested my page on the following browsers and found it worked on all
 * Chrome
 * Firefox
 
-### Issues
+### Other testing
 
-During my code I had issues with having custom info windows for my Google Maps API and the code for my Read More buttons did not pass the WC3 Validator. These issues were overcome by trial and error with the code myself.
+Extensive testing by family, friends was used and no issues arose when doing so
 
 # Deployment
+This project has been pushed and deployed to the cloud application platform Heroku.
+
+1. On Heroku create an account and log in.
+1. Click new and create new app.
+1. Choose a unique name for your app, select region and click on Create App
+1. Go to the CLI and type $ sudo snap install heroku --classic
+1. Type $ heroku login command into the terminal, type the email and the password.
+1. Go back to Heroku, under Settings find Info and copy the Heroku Git URL.
+1. Go to the CLI and type the command $ git remote add heroku <Heroku Git URL>
+1. Create requirements.txt ($ sudo pip3 freeze --local > requirements.txt)
+1. Create a Procfile ($ echo web: python app.py > Procfile)
+1. Type git add ., git commit -m "Initial commit" and git push -u heroku master
+1. Type $ heroku ps:scale web=1 into the terminal.
+1. Go back to Heroku, under the Settings click Reveal Config Vars and set IP to 0.0.0.0 and the PORT to 5000. Set "MONGO_URI", "MONGO_DBNAME" and "API_KEY" with the corresponding values.
+1. Go back into Heroku and under More click Restart all dynos
+1. Click on Open App
 
 ### Deploying
 
 I created my Milestone project using the GitPod environment and pushing it to Github after completing each section, this made sure that my project had good version control in place in case I needed to change some of the work. To create a live version of my project for people to view I did the following:
 
-* Went to my Milestone Project repository on GitHub
-* Went to settings and scrolled down to GitHub Pages
-* Selected the master branch as source which then gave me the link to include in my ReadMe for people to view
-* You can view my project here: [Madrid](https://ryanjbm.github.io/Milestone-Project-2/)
-
-To run locally, you can clone this repository directly into the editor of your choice by pasting git clone https://github.com/ryanjbm/Milestone-Project-2.git into the terminal. To cut ties with this GitHub repository, type git remote rm origin into the terminal.
 
 # Credits
 
 ### Content
 
-The content of my website was written by me, however names and locations of places are real.
+The content of my website was written by me
 
 ### Media
 
