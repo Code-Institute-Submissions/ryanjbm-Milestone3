@@ -16,6 +16,8 @@ body{
     flex-direction: column;
     background-color: white;
     letter-spacing: 1px;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 .nav-logo{
 font-family: 'Arvo', serif;
